@@ -5,7 +5,7 @@ export { CloudmateExceptionMetaDataTypes, CloudmateExceptionTypes} from "./const
 
 export {CommandContext as CommandContext ,CommandExecutionData as CommandExecutionData} from "./types/command.interface";
 
-export {WorkFunction} from "./types/worker.interface";
+export {WorkFunction as WorkFunction} from "./types/worker.interface";
 
 export {CloudmateExceptionType} from "./types/cloudmateException.interface";
 
