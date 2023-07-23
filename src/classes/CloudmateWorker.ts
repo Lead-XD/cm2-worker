@@ -1,6 +1,6 @@
 import { WorkFunction } from "../types/worker.interface";
 import Redis from "ioredis";
-import os from "os";
+import  * as os from "os";
 import { Worker, Job } from "bullmq";
 import ExecutedCommand, { ExecutedCommandDocument } from "../models/ExecutedCommand";
 import { CommandContext, CommandExecutionData } from "../types/command.interface";
@@ -12,9 +12,9 @@ import connectToMongoDB from "../config/database.config";
 
 export class CloudmateWorker {
     private registeredJobs: Map<string, WorkFunction> = new Map();
-    private redisConnection: Redis;
-    private queueName: string;
-    private workerJWT: string;
+    private readonly redisConnection: Redis;
+    private readonly queueName: string;
+    private readonly workerJWT: string;
     private cm2DBURL: string;
 
     constructor(queueName: string, workerJWT: string, cm2DBURL: string, redisURL: string);
@@ -91,10 +91,8 @@ export class CloudmateWorker {
                     executedCommandDocument.isNew = false;
                     executedCommandDocument.set("execStatus", CommandExecStatus.failed);
                     await executedCommandDocument.save();
-                    if (e instanceof CloudmateException) {
-                        const cm2Client = new Cloudmate2API(this.workerJWT, job.data.queueData.organizationId);
-                        await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, true);
-                    }
+                    const cm2Client = new Cloudmate2API(this.workerJWT, job.data.queueData.organizationId);
+                    await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, true);
                 }
             });
         });

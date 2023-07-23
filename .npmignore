@@ -5,5 +5,5 @@
 out
 gen
 .github
-/test/node_modules
+/tests/
 /src/

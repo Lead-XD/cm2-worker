@@ -1,19 +1,9 @@
-import {CommandExecStatus, CommandStatus} from "../constants/command.constants";
+import {CommandExecStatus} from "../constants/command.constants";
 import mongoose from "mongoose";
-import {EventFilterDocument} from "../models/EventFilter.model";
 import { ExecutedCommandDocument } from "../models/ExecutedCommand";
 import { workTriggerType } from "../constants/logs.constants";
 import { AsanaEventDocument } from "../models/AsanaEvent.model";
 
-export type CommandDocumentType =  {
-    name:string,
-    description:string,
-    work:string,
-    status:CommandStatus,
-    priority:number,
-    eventFilter:mongoose.Types.ObjectId|EventFilterDocument,
-    default:boolean,
-}
 
 export type  ExecutedCommandDocumentType = {
     command:mongoose.Types.ObjectId,
@@ -25,6 +15,7 @@ export type  ExecutedCommandDocumentType = {
     project:mongoose.Types.ObjectId,
     exception:mongoose.Types.ObjectId,
 }
+
 
 export type CommandContext =  {
     jobName:string,

@@ -1,6 +1,6 @@
 {
   "name": "cm2-worker",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -11,6 +11,7 @@
     "release": "pnpm run build && changeset publish",
     "lint": "tsc"
   },
+  "files": ["dist"],
   "author": "Dawood Aijaz",
   "license": "ISC",
   "devDependencies": {
