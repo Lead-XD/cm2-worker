@@ -4,7 +4,7 @@ import {
     workExecStatus,
     workType
 } from "../constants/logs.constants";
-import {workLogDocumentInterface} from "../interfaces/logs.interface";
+import {WorkLog} from "../types/logs.interface";
 
 
 export const functionIntercept = {
@@ -12,7 +12,7 @@ export const functionIntercept = {
         try {
             if (argumentsList.length > 0) {
                 if (argumentsList[0] && argumentsList[0].trigger.id && argumentsList[0].trigger.type) { // check if context is passed;
-                    const workLogData:workLogDocumentInterface = {
+                    const workLogData:WorkLog = {
                             name: target.name,
                             startTime: new Date(),
                             trigger: argumentsList[0].trigger,
@@ -40,7 +40,7 @@ export const objectIntercept = {
         if (target.hasOwnProperty(name)) {
             if (typeof target[name] === "function") {
                 if (target['trigger']) {
-                    const workLogData:workLogDocumentInterface = {
+                    const workLogData:WorkLog = {
                             name: target.name,
                             startTime: new Date(),
                             trigger: target['trigger'],

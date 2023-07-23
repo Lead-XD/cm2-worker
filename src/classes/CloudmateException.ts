@@ -1,4 +1,7 @@
-import { CloudmateExceptionMetaData,CloudmateExceptionDocumentInterface } from "../interfaces/cloudmateException.interface";
+import {
+    CloudmateExceptionMetaData,
+    CloudmateExceptionType
+} from "../types/cloudmateException.interface";
 import {CloudmateExceptionTypes} from "../constants/exception.constants";
 import mongoose from "mongoose";
 
@@ -23,7 +26,7 @@ export class CloudmateException extends Error {
     uncompleteSourceTask:boolean;
     userSimone?:boolean;
 
-    constructor(cloudmateExceptionObj:CloudmateExceptionDocumentInterface){
+    constructor(cloudmateExceptionObj:CloudmateExceptionType){
         super();
         this.name = cloudmateExceptionObj.name||this.name;
         this.message = cloudmateExceptionObj.message||this.message;
@@ -45,7 +48,7 @@ export class CloudmateException extends Error {
 
 
 export class UnknownException extends CloudmateException {
-    constructor(cloudmateExceptionObj:CloudmateExceptionDocumentInterface,exception:any){
+    constructor(cloudmateExceptionObj:CloudmateExceptionType,exception:any){
         super(cloudmateExceptionObj);
         this.type = CloudmateExceptionTypes.unknown;
         if(exception){
@@ -60,7 +63,7 @@ export class UnknownException extends CloudmateException {
 
 
 export class TwilioException extends CloudmateException {
-    constructor(cloudmateExceptionObj:CloudmateExceptionDocumentInterface,twilioException:any){
+    constructor(cloudmateExceptionObj:CloudmateExceptionType,twilioException:any){
         super(cloudmateExceptionObj);
         this.type = CloudmateExceptionTypes.twilio;
         if(twilioException){
@@ -77,7 +80,7 @@ export class TwilioException extends CloudmateException {
 
 
 export class SendGridException extends CloudmateException {
-    constructor(cloudmateExceptionObj:CloudmateExceptionDocumentInterface,sendGridException:any){
+    constructor(cloudmateExceptionObj:CloudmateExceptionType,sendGridException:any){
         super(cloudmateExceptionObj);
         this.type = CloudmateExceptionTypes.sendGrid;
         if(sendGridException){

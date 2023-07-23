@@ -5,7 +5,7 @@ import { ExecutedCommandDocument } from "../models/ExecutedCommand";
 import { workTriggerType } from "../constants/logs.constants";
 import { AsanaEventDocument } from "../models/AsanaEvent.model";
 
-export interface CommandDocumentInterface {
+export type CommandDocumentType =  {
     name:string,
     description:string,
     work:string,
@@ -15,7 +15,7 @@ export interface CommandDocumentInterface {
     default:boolean,
 }
 
-export interface ExecutedCommandDocumentInterface {
+export type  ExecutedCommandDocumentType = {
     command:mongoose.Types.ObjectId,
     priority:number,
     jobID:string,
@@ -26,7 +26,7 @@ export interface ExecutedCommandDocumentInterface {
     exception:mongoose.Types.ObjectId,
 }
 
-export interface CommandContext {
+export type CommandContext =  {
     jobName:string,
     organizationId: mongoose.Schema.Types.ObjectId,
     commandId: mongoose.Schema.Types.ObjectId,
@@ -38,7 +38,7 @@ export interface CommandContext {
     },
     workerId: mongoose.Schema.Types.ObjectId,
 }
-export interface CommandExecutionData{
+export type CommandExecutionData = {
     taskGID:string,
     resource:Object,
 }

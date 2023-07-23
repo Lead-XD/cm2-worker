@@ -1,9 +1,9 @@
-import { WorkFunction } from "../interfaces/worker.interface";
+import { WorkFunction } from "../types/worker.interface";
 import Redis from "ioredis";
 import os from "os";
 import { Worker, Job } from "bullmq";
 import ExecutedCommand, { ExecutedCommandDocument } from "../models/ExecutedCommand";
-import { CommandContext, CommandExecutionData } from "../interfaces/command.interface";
+import { CommandContext, CommandExecutionData } from "../types/command.interface";
 import { workTriggerType } from "../constants/logs.constants";
 import { CommandExecStatus } from "../constants/command.constants";
 import { CloudmateException } from "./CloudmateException";

@@ -3,7 +3,7 @@ import {
     EventSources
 } from "../constants/eventFilter.constants";
 
-export interface EventFilterDocumentInterface {
+export type EventFilterDocumentType =  {
     name:string,
     description: string,
     filter: { [key: string]: string },

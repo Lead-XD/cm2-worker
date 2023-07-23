@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import {ExecutedCommandDocumentInterface} from "../interfaces/command.interface";
 import {CommandExecStatus} from "../constants/command.constants";
+import {ExecutedCommandDocumentType} from "../types/command.interface";
 
 
 export type ExecutedCommandDocument =
     mongoose.Document
-    & ExecutedCommandDocumentInterface;
+    & ExecutedCommandDocumentType;
 
 const executedCommandSchema = new mongoose.Schema<ExecutedCommandDocument>(
     {

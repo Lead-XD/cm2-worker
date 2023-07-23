@@ -11,8 +11,5 @@
     "noEmit": true,
     "noUncheckedIndexedAccess": true,
     "declaration":true,
-//     "paths": {
-//      "cm2-worker": ["./types/index.d.ts"]
-//    }
   }
 }

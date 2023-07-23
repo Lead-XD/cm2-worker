@@ -4,7 +4,8 @@ import {
     workTriggerType,
     workType
 } from "../constants/logs.constants";
-export interface workLogDocumentInterface {
+
+export type WorkLog = {
     name: string,
     startTime: Date,
     endTime?: Date,

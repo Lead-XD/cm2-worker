@@ -1,15 +1,14 @@
 import mongoose from "mongoose";
-import {
-    EventFilterDocumentInterface
-} from "../interfaces/eventFilter.interface";
+
 import {
     EventFilterTypes,
     EventSources
 } from "../constants/eventFilter.constants";
+import {EventFilterDocumentType} from "../types/eventFilter.interface";
 
 export type EventFilterDocument =
     mongoose.Document
-    & EventFilterDocumentInterface;
+    & EventFilterDocumentType;
 
 const eventFilterSchema = new mongoose.Schema<EventFilterDocument>(
     {

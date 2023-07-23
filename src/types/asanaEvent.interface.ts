@@ -2,19 +2,19 @@ import { Timestamp } from "mongodb";
 import {AsanaEventSources} from "../constants/constants";
 import mongoose from "mongoose";
 
-export interface gidResourceType {
+interface gidResourceType {
     gid: string;
     resourceType: string;
 }
 
-export interface gidResourceTypeSubType extends gidResourceType {
+interface gidResourceTypeSubType extends gidResourceType {
     resourceSubtype: string;
 }
 
-export interface addedValueType extends gidResourceType {
+interface addedValueType extends gidResourceType {
     user:gidResourceType;
 }
-export interface cloudmateProjectData {
+interface cloudmateProjectData {
     project: string;
     projectGID:string,
     projectType:string,
@@ -24,7 +24,7 @@ export interface cloudmateProjectData {
     exception:mongoose.Schema.Types.ObjectId,
 }
 
-export interface AsanaEventDocumentInterface {
+export interface asanaEventDocumentInterface {
 
     receivedAt?: Timestamp;
     updatedAt?: Timestamp;
