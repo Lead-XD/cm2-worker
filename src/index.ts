@@ -3,7 +3,7 @@ export { CloudmateWorker } from "./classes/CloudmateWorker";
 export { Cloudmate2API } from "./classes/Cloumdate2API";
 export { CloudmateExceptionMetaDataTypes, CloudmateExceptionTypes} from "./constants/exception.constants";
 
-export {CommandContext,CommandExecutionData} from "./types/command.interface";
+export {CommandContext as CommandContext ,CommandExecutionData as CommandExecutionData} from "./types/command.interface";
 
 export {WorkFunction} from "./types/worker.interface";
 
