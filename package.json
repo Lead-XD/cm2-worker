@@ -1,11 +1,10 @@
 {
   "name": "cm2-worker",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "type": "module",
   "scripts": {
     "build": "tsup src --format cjs,esm --dts",
     "release": "pnpm run build && changeset publish",
