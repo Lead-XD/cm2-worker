@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.2.0
+
+### Minor Changes
+
+- f807d9e: Release as public
+
 ## 2.1.0
 
 ### Minor Changes
