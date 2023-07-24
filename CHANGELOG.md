@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.3.0
+
+### Minor Changes
+
+- d3da0c4: Removing scope from package
+
 ## 2.2.0
 
 ### Minor Changes
