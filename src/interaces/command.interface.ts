@@ -22,12 +22,12 @@ export interface  ExecutedCommandDocumentType {
 
 export interface CommandContext  {
     jobName:string,
-    organizationId: mongoose.Schema.Types.ObjectId,
-    commandId: mongoose.Schema.Types.ObjectId,
+    organizationId: mongoose.Types.ObjectId,
+    commandId: mongoose.Types.ObjectId,
     projectDocument:ProjectDocument,
     eventDocument: AsanaEventDocument,
     executedCommandDocument:ExecutedCommandDocument
-    workerId: mongoose.Schema.Types.ObjectId,
+    workerId: mongoose.Types.ObjectId,
 }
 export interface CommandExecutionData {
     asanaTaskDocument:AsanaTaskDocument,
@@ -40,9 +40,9 @@ export interface CommandDocumentInterface {
     work: string,
     status: CommandStatus,
     priority: number,
-    eventFilter: mongoose.Schema.Types.ObjectId | EventFilterDocument,
+    eventFilter: mongoose.Types.ObjectId | EventFilterDocument,
     default: boolean,
-    worker: mongoose.Schema.Types.ObjectId | WorkerDocument,
+    worker: mongoose.Types.ObjectId | WorkerDocument,
 }
 
 

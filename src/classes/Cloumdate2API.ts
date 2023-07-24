@@ -6,7 +6,7 @@ import { CloudmateException, UnknownException } from './CloudmateException';
 export class Cloudmate2API {
     private readonly jwt: string;
     private baseURL = process.env.CLOUDMATE2_BASE_API_URL!;
-    private organizationId: mongoose.Schema.Types.ObjectId;
+    private organizationId: mongoose.Types.ObjectId;
     private readonly authHeaders;
     private urlMap = {
         task: {
@@ -20,7 +20,7 @@ export class Cloudmate2API {
             createException: this.baseURL + "/exception/createException"
         }
     }
-    constructor(jwt: string, organizationId: mongoose.Schema.Types.ObjectId) {
+    constructor(jwt: string, organizationId: mongoose.Types.ObjectId) {
         this.jwt = jwt;
         this.organizationId = organizationId;
         this.authHeaders = {
