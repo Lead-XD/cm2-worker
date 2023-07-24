@@ -10,8 +10,7 @@
     "noEmit": true,
     "noUncheckedIndexedAccess": true,
     "declaration": true,
-    "esModuleInterop": false
-
+    "esModuleInterop": false,
   },
   "include": ["src/**/*"],
     "exclude": ["node_modules"]

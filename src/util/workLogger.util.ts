@@ -4,7 +4,7 @@ import {
     workExecStatus,
     workType
 } from "../constants/logs.constants";
-import {WorkLog} from "../types/logs.interface";
+import {WorkLog} from "../interaces/logs.interface";
 
 
 export const functionIntercept = {

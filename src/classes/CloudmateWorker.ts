@@ -1,14 +1,17 @@
-import { WorkFunction } from "../types/worker.interface";
+import { WorkFunction } from "../interaces/worker.interface";
 import Redis from "ioredis";
 import  * as os from "os";
 import { Worker, Job } from "bullmq";
-import ExecutedCommand, { ExecutedCommandDocument } from "../models/ExecutedCommand";
-import { CommandContext, CommandExecutionData } from "../types/command.interface";
+import ExecutedCommand, { ExecutedCommandDocument } from "../models/ExecutedCommand.model";
+import { CommandContext, CommandExecutionData } from "../interaces/command.interface";
 import { workTriggerType } from "../constants/logs.constants";
 import { CommandExecStatus } from "../constants/command.constants";
 import { CloudmateException } from "./CloudmateException";
 import { Cloudmate2API } from "./Cloumdate2API";
 import connectToMongoDB from "../config/database.config";
+import Project,{ProjectDocument} from "../models/Project.model";
+import AsanaEvent,{AsanaEventDocument} from "../models/AsanaEvent.model";
+import AsanaTask,{AsanaTaskDocument} from "../models/AsanaTask.model";
 
 export class CloudmateWorker {
     private registeredJobs: Map<string, WorkFunction> = new Map();
@@ -51,23 +54,33 @@ export class CloudmateWorker {
         const systemCpuCores = os.cpus();
         connectToMongoDB(this.cm2DBURL).then(() => {
             const bullmqWorker = new Worker(this.queueName, async (job: Job) => {
-                console.log(`Processing Job: ${job.name}`);
+                console.log(`[${new Date().toLocaleString()}] Processing Job: ${job.name}.`);
+
                 const executedCommandDocument: ExecutedCommandDocument = new ExecutedCommand(job.data.queueData.executedCommandObj);
                 executedCommandDocument.isNew = false;
+
+                const projectDocument:ProjectDocument = new Project(job.data.queueData.projectObj);
+                projectDocument.isNew = false;
+
+                const asanaEventDocument:AsanaEventDocument = new AsanaEvent(job.data.queueData.eventObj);
+                asanaEventDocument.isNew = false;
+
+                const asanaTaskDocument:AsanaTaskDocument = new AsanaTask(job.data.queueData.taskObj);
+                asanaTaskDocument.isNew = false;
+
+
+
                 const commandCTX: CommandContext = {
                     organizationId: job.data.queueData.organizationId,
                     commandId: job.data.queueData.commandId,
-                    projectObj: job.data.queueData.projectObj,
-                    eventObj: job.data.queueData.eventObj,
-                    triggerData: {
-                        triggerObj: executedCommandDocument,
-                        type: workTriggerType.command
-                    },
+                    projectDocument: projectDocument,
+                    eventDocument: asanaEventDocument,
+                    executedCommandDocument:executedCommandDocument,
                     workerId: job.data.queueData.workerId,
                     jobName: job.name,
                 }
                 const commandExecutionData: CommandExecutionData = {
-                    taskGID: job.data.queueData.taskGID,
+                    asanaTaskDocument: asanaTaskDocument,
                     resource: job.data.queueData.resource,
                 }
                 const workFunction = this.registeredJobs.get(job.name);

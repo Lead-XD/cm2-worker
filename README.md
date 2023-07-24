@@ -44,7 +44,7 @@ import { Cloudmate2API } from "./classes/Cloumdate2API";
 import { CloudmateWorker } from "./classes/Woker";
 import { jobsForCommandWorker } from "./constants";
 import { CloudmateExceptionMetaDataTypes } from "./constants/exception.constants";
-import { CommandContext, CommandExecutionData } from "./types/command.interface";
+import { CommandContext, CommandExecutionData } from "./interaces/command.interface";
 
 const cloudmateWorker = new CloudmateWorker(
     process.env.REDIS_COMMAND_QUEUE!,

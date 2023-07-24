@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import {CommandExecStatus} from "../constants/command.constants";
-import {ExecutedCommandDocumentType} from "../types/command.interface";
+import {ExecutedCommandDocumentType} from "../interaces/command.interface";
 
 
 export type ExecutedCommandDocument =
@@ -41,12 +41,12 @@ const executedCommandSchema = new mongoose.Schema<ExecutedCommandDocument>(
     }
 );
 
-let ExecutedCommand;
+let ExecutedCommandModel;
 
 try {
-    ExecutedCommand = mongoose.model("ExecutedCommand");
+    ExecutedCommandModel = mongoose.model("ExecutedCommand");
 } catch (e) {
-    ExecutedCommand = mongoose.model<ExecutedCommandDocument>("ExecutedCommand", executedCommandSchema);
+    ExecutedCommandModel = mongoose.model<ExecutedCommandDocument>("ExecutedCommand", executedCommandSchema);
 }
 
-export default ExecutedCommand as mongoose.Model<ExecutedCommandDocument>;
+export default ExecutedCommandModel as mongoose.Model<ExecutedCommandDocument>;

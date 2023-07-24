@@ -198,24 +198,3 @@ export enum TwilioExceptionDescriptions {
 export enum SendGridExceptions {
     sendGridExceptionOccurred = "Sending Email from Asana: SendGrid Exception occurred while sending email"
 }
-
-export enum UnknownExceptionDescriptions {
-    sendSMSDescription = "Unknown Exception occurred while sending sms from Asana",
-    receiveSMSDescription = "This was an unknown exception occurred while receiving sms",
-    scheduleSMSDescription = "Exception occurred while scheduling SMS from ASANA from an outbox project",
-    scheduleEmailDescription = "Exception occurred while scheduling Email from ASANA from an outbox project",
-    createNewCustomField = "Unknown Exception occurred while creating a new custom field",
-    processingIncomingMessageFromTwilio = "Exception occurred while processing incoming message from twilio",
-    cloudmateInvitation = "Exception occurred while inviting cloudmate.",
-    addingUsersInProject = "Unknown Exception occurred while adding users in project",
-    smsSetup = "Unknown Exception occurred while setting up SMS feature",
-    createIncomingPhoneNumber = "Unknown Exception occurred while creating new incoming phone number",
-    sendEmailFromAsana = "Unknown Exception occurred while sending email from Asana",
-    processAsanaEventForDrip = "Unknown Exception occurred while processing Asana Event for Drip",
-    processIncomingSendGridEmail = "Unknown Exception occurred while processing incoming email via SendGrid Webhook",
-    receiveEmailInAsana = "Unknown Exception occurred while receiving email in Asana",
-    receivingSendGridEmailController = "Unknown Exception occurred in controller receivingSendGridEmail",
-    settingUpFeatureFromCloudmateProject = "Unknown Exception occurred while setting up a feature from cloudmate project",
-    findCreateProjectInAsana = "Unknown Exception occurred while creating new project in findOrCreateProjectInAsana",
-    processEventGeneral = "Unknown Exception occurred while processing the event from Asana"
-}

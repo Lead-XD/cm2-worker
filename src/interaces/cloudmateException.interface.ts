@@ -3,13 +3,13 @@ import {
     CloudmateExceptionMetaDataTypes, CloudmateExceptionTypes
 } from "../constants/exception.constants";
 
-export type CloudmateExceptionMetaData = {
+export interface CloudmateExceptionMetaData  {
     type: CloudmateExceptionMetaDataTypes,
     ref?:  String,
     data?:  any,
 }
 
-export type CloudmateExceptionType =  {
+export interface CloudmateExceptionType  {
     organization?:mongoose.Types.ObjectId,
     name?:string,
     message?:string,

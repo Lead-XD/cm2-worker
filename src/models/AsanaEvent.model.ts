@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import {AsanaEventSources} from "../constants/constants";
-import { asanaEventDocumentInterface } from "../types/asanaEvent.interface";
+import { asanaEventDocumentInterface } from "../interaces/asanaEvent.interface";
 export type AsanaEventDocument = mongoose.Document & asanaEventDocumentInterface;
 
 const asanaEventSchema = new mongoose.Schema<AsanaEventDocument>(
