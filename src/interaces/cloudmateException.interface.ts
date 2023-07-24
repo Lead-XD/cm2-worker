@@ -14,7 +14,6 @@ export interface CloudmateExceptionType  {
     name?:string,
     message?:string,
     description?:string,
-    type?:CloudmateExceptionTypes,
     statusCode?:number,
     stack?:string,
     exceptionErrors?:string[],

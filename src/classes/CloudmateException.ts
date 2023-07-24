@@ -34,7 +34,7 @@ export class CloudmateException extends Error {
         this.metaData = cloudmateExceptionObj.metaData;
         this.statusCode= cloudmateExceptionObj.statusCode?cloudmateExceptionObj.statusCode:500;
         this.exceptionErrors = [];
-        this.type = cloudmateExceptionObj.type||CloudmateExceptionTypes.cloudmate;
+        this.type = CloudmateExceptionTypes.cloudmate;
         this.exceptionTaskGID = cloudmateExceptionObj.exceptionTaskGID
         this.exceptionNotificationStoryGID = cloudmateExceptionObj.exceptionNotificationStoryGID;
         this.notificationTextData = cloudmateExceptionObj.notificationTextData;

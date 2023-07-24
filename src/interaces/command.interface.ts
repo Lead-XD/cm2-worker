@@ -6,6 +6,7 @@ import {EventFilterDocument} from "../models/EventFilter.model";
 import {WorkerDocument} from "../models/Worker.model";
 import {ProjectDocument} from "../models/Project.model";
 import {AsanaTaskDocument} from "../models/AsanaTask.model";
+import {workTriggerType} from "../constants/logs.constants";
 
 
 export interface  ExecutedCommandDocumentType {
@@ -26,7 +27,10 @@ export interface CommandContext  {
     commandId: mongoose.Types.ObjectId,
     projectDocument:ProjectDocument,
     eventDocument: AsanaEventDocument,
-    executedCommandDocument:ExecutedCommandDocument
+    trigger:{
+        triggerDocument:ExecutedCommandDocument,
+        triggerType:workTriggerType
+    }
     workerId: mongoose.Types.ObjectId,
 }
 export interface CommandExecutionData {

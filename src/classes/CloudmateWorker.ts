@@ -1,7 +1,7 @@
 import {WorkFunction} from "../interaces/worker.interface";
 import Redis from "ioredis";
 import * as os from "os";
-import {Worker, Job} from "bullmq";
+import {Job, Worker} from "bullmq";
 import ExecutedCommand, {
     ExecutedCommandDocument
 } from "../models/ExecutedCommand.model";
@@ -17,6 +17,7 @@ import Project, {ProjectDocument} from "../models/Project.model";
 import AsanaEvent, {AsanaEventDocument} from "../models/AsanaEvent.model";
 import AsanaTask, {AsanaTaskDocument} from "../models/AsanaTask.model";
 import {JobData} from "../interaces/general.interface";
+import {workTriggerType} from "../constants/logs.constants";
 
 export class CloudmateWorker {
     private registeredJobs: Map<string, WorkFunction> = new Map();
@@ -82,7 +83,10 @@ export class CloudmateWorker {
                     commandId: data.commandId,
                     projectDocument: projectDocument,
                     eventDocument: asanaEventDocument,
-                    executedCommandDocument: executedCommandDocument,
+                    trigger:{
+                        triggerDocument: executedCommandDocument,
+                        triggerType: workTriggerType.command
+                    },
                     workerId: data.workerId,
                     jobName: job.name,
                 }

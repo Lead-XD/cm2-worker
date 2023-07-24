@@ -6,7 +6,7 @@ import Project from "./models/Project.model";
 
 
 //Exported Classes
-export {CloudmateException} from "./classes/CloudmateException";
+export {CloudmateException,UnknownException} from "./classes/CloudmateException";
 export {CloudmateWorker} from "./classes/CloudmateWorker";
 export {Cloudmate2API} from "./classes/Cloumdate2API";
 
@@ -25,6 +25,8 @@ export {
     CommandContext,
     CommandExecutionData
 } from "./interaces/command.interface";
+
+export {Context} from "./interaces/general.interface";
 
 export {WorkFunction} from "./interaces/worker.interface";
 export {CloudmateExceptionType} from "./interaces/cloudmateException.interface";
