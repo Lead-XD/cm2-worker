@@ -1,6 +1,6 @@
 {
   "name": "@leadxd/cm2-worker",
-  "version": "1.11.0",
+  "version": "2.0.0",
   "description": "Worker for CM2",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -10,11 +10,13 @@
     "release": "pnpm run build && changeset publish",
     "lint": "tsc"
   },
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/Lead-XD/cm2-worker.git"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "author": "Dawood Aijaz <dawood@leadxd.com>",
   "license": "ISC",
   "devDependencies": {
