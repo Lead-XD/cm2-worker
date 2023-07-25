@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.5.1
+
+### Patch Changes
+
+- abe2242: Fix work logs checks
+
 ## 2.5.0
 
 ### Minor Changes
