@@ -26,31 +26,11 @@ export class CloudmateWorker {
     private readonly workerJWT: string;
     private cm2DBURL: string;
 
-    constructor(queueName: string, workerJWT: string, cm2DBURL: string, redisURL: string);
-    constructor(
-        queueName: string,
-        workerJWT: string,
-        CM2DB: string,
-        redisPort: number,
-        redisHost: string,
-        redisPassword?: string,
-        redisUsername?: string
-    )
-    constructor(queueName: string, workerJWT: string, cm2DBURL: string, arg4: unknown, redisHost?: string, redisPassword?: string, redisUsername?: string) {
+    constructor(queueName: string, workerJWT: string, cm2DBURL: string, redisURL: string) {
         this.queueName = queueName;
         this.workerJWT = workerJWT;
         this.cm2DBURL = cm2DBURL;
-        if (arg4 instanceof String || typeof arg4 === "string") {
-            this.redisConnection = new Redis(arg4 as string);
-
-        } else if (arg4 instanceof Number || typeof arg4 === "number") {
-            this.redisConnection = new Redis(arg4 as number, redisHost!, {
-                password: redisPassword,
-                username: redisUsername,
-            });
-        } else {
-            throw new Error("Invalid arguments");
-        }
+        this.redisConnection = new Redis(redisURL);
     }
 
     register(jobName: string, work: WorkFunction) {

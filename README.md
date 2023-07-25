@@ -19,10 +19,8 @@ Before running the worker, make sure you have the following prerequisites instal
    2. **WORKER_TOKEN_SECRET** - the jwt token for authenticating the worker with 
       CM2 openapi
    3. **CM2_MONGODB_URI** - the URI of the CM2 MongoDB database
-   4. **REDIS_PORT** - the port on which Redis is running
-   5. **REDIS_HOST** - the host on which Redis is running
-   6. **REDIS_URL** - instead of providing (4) and (5) you can use complete 
-      redis url
+   4. **REDIS_URL** - the URL of the Redis database
+   5. **CLOUDMATE2_BASE_API_URL** - Cloudmate2 openapi url
 3. Make sure the relevant commands and workers are setup inside CM2 using 
    CM2 API. 
 
@@ -47,8 +45,7 @@ const cloudmateWorker = new CloudmateWorker(
     process.env.REDIS_COMMAND_QUEUE!, // name of the queue on which the worker will listen for jobs
     process.env.WORKER_TOKEN_SECRET!, // the jwt token for authenticating the worker with CM2 openapi
     process.env.CM2_MONGODB_URI!, // the URI of the CM2 MongoDB database
-    +process.env.REDIS_PORT!, // the port on which Redis is running
-    process.env.REDIS_HOST! // the host on which Redis is running
+    process.env.REDIS_URL!, // the URL of the Redis database
 );
 
 const foo = async (commandCTX: CommandContext,data:CommandExecutionData) => {
