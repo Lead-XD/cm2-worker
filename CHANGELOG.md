@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.4.0
+
+### Minor Changes
+
+- 879fe4b: Only support full redis url in CloudmateWorker class constructor
+
 ## 2.3.0
 
 ### Minor Changes
