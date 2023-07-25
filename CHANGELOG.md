@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.5.0
+
+### Minor Changes
+
+- 3515141: Update work logs queue name
+
 ## 2.4.0
 
 ### Minor Changes
