@@ -112,7 +112,7 @@ export class Cloudmate2API {
             useSimone: useSimone,
             exceptionUserNotificationData: cloudmateException.notificationTextData,
             triggerID: triggerID.toString(),
-            uncompleteSource: uncompleteSource
+            uncompleteSourceTask: uncompleteSource
         };
         await axios.post(`${this.urlMap.exception.createException}`, data, {
             headers: {...this.authHeaders},
