@@ -20,6 +20,10 @@ export interface  ExecutedCommandDocumentType {
     exception:mongoose.Types.ObjectId,
 }
 
+export interface TriggerContext{
+    triggerDocument:ExecutedCommandDocument,
+    triggerType:workTriggerType
+}
 
 export interface CommandContext  {
     jobName:string,
@@ -27,10 +31,7 @@ export interface CommandContext  {
     commandId: mongoose.Types.ObjectId,
     projectDocument:ProjectDocument,
     eventDocument: AsanaEventDocument,
-    trigger:{
-        triggerDocument:ExecutedCommandDocument,
-        triggerType:workTriggerType
-    }
+    trigger:TriggerContext,
     workerId: mongoose.Types.ObjectId,
 }
 export interface CommandExecutionData {

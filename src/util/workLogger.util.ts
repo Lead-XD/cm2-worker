@@ -10,6 +10,7 @@ import {CloudmateWorker} from "../classes/CloudmateWorker";
 export const functionIntercept = {
     apply: function (target: any, thisArg: any, argumentsList: any) {
         try {
+
             if (argumentsList.length > 0) {
                 if (CloudmateWorker.logQueue && argumentsList[0] && argumentsList[0].trigger && argumentsList[0].trigger.triggerDocument && argumentsList[0].trigger.triggerDocument._id && argumentsList[0].trigger.triggerType) {
                     const workLogData:WorkLog = {
@@ -34,11 +35,16 @@ export const functionIntercept = {
 };
 export const objectIntercept = {
     get: function (target: any, name: string, receiver: any): any {
+        console.log('get intercept');
+        console.log(name);
         if (target.hasOwnProperty(name)) {
+            console.log('hasOwnProperty');
             if (typeof target[name] === "function") {
+                console.log('is function');
                 if (CloudmateWorker.logQueue && target['trigger'] && target['trigger'].triggerDocument && target['trigger'].triggerDocument._id && target['trigger'].triggerType){
+                    console.log('Check pass');
                     const workLogData:WorkLog = {
-                            name: target.name,
+                            name: name,
                             startTime: new Date(),
                             trigger: {id:target['trigger'].triggerDocument._id, type:target['trigger'].triggerType},
                             workType: workType.api,

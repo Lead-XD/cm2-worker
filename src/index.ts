@@ -22,6 +22,7 @@ export {workExecStatus} from "./constants/logs.constants";
 
 //Exported types and interfaces
 export {
+    TriggerContext,
     CommandContext,
     CommandExecutionData
 } from "./interaces/command.interface";

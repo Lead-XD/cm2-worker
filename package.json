@@ -15,7 +15,8 @@
     "url": "https://github.com/Lead-XD/cm2-worker.git"
   },
   "files": [
-    "dist"
+    "dist/**/*",
+    "src/**/*"
   ],
   "author": "Dawood Aijaz <dawood@leadxd.com>",
   "license": "ISC",
