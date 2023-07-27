@@ -24,13 +24,13 @@ export class CloudmateException extends Error {
     parentTaskGID?:string;
     sourceTaskGID:string;
     uncompleteSourceTask:boolean;
-    userSimone?:boolean;
+    useSimone?:boolean;
 
     constructor(cloudmateExceptionObj:CloudmateExceptionType){
         super();
         this.name = cloudmateExceptionObj.name||this.name;
         this.message = cloudmateExceptionObj.message||this.message;
-        this.description = cloudmateExceptionObj.description||this.description;
+        this.description = cloudmateExceptionObj.description||this.description||this.message;
         this.metaData = cloudmateExceptionObj.metaData;
         this.statusCode= cloudmateExceptionObj.statusCode?cloudmateExceptionObj.statusCode:500;
         this.exceptionErrors = [];
@@ -42,7 +42,7 @@ export class CloudmateException extends Error {
         this.parentTaskGID = cloudmateExceptionObj.parentTaskGID;
         this.sourceTaskGID = cloudmateExceptionObj.sourceTaskGID;
         this.uncompleteSourceTask = cloudmateExceptionObj.uncompleteSourceTask||false;
-        this.userSimone = cloudmateExceptionObj.userSimone||false;
+        this.useSimone = cloudmateExceptionObj.useSimone||false;
     }
 }
 

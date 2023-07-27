@@ -31,6 +31,6 @@ export interface CloudmateExceptionType  {
     parentTaskGID?:string;
     sourceTaskGID:string;
     uncompleteSourceTask?:boolean;
-    userSimone?:boolean;
+    useSimone?:boolean;
 }
 

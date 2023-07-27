@@ -1,25 +1,25 @@
-import {logQueue} from "../config/bullMQ.config";
 import {
     jobsForLogsWorker,
     workExecStatus,
     workType
 } from "../constants/logs.constants";
 import {WorkLog} from "../interaces/logs.interface";
+import {CloudmateWorker} from "../classes/CloudmateWorker";
 
 
 export const functionIntercept = {
     apply: function (target: any, thisArg: any, argumentsList: any) {
         try {
             if (argumentsList.length > 0) {
-                if (argumentsList[0] && argumentsList[0].triggerDocument && argumentsList[0].triggerDocument._id && argumentsList[0].triggerType) { // check if context is passed;
+                if (CloudmateWorker.logQueue && argumentsList[0] && argumentsList[0].trigger && argumentsList[0].trigger.triggerDocument && argumentsList[0].trigger.triggerDocument._id && argumentsList[0].trigger.triggerType) {
                     const workLogData:WorkLog = {
                             name: target.name,
                             startTime: new Date(),
-                            trigger: {id:argumentsList[0].triggerDocument._id, type:argumentsList[0].triggerType},
+                            trigger: {id:argumentsList[0].trigger.triggerDocument._id, type:argumentsList[0].trigger.triggerType},
                             workType: workType.function,
                             status: workExecStatus.processing,
                     }
-                    logQueue.add(jobsForLogsWorker.log, workLogData, {
+                    CloudmateWorker.logQueue.add(jobsForLogsWorker.log, workLogData, {
                         removeOnComplete: true,
                         removeOnFail: true
                     }).catch((err) => {
@@ -36,7 +36,7 @@ export const objectIntercept = {
     get: function (target: any, name: string, receiver: any): any {
         if (target.hasOwnProperty(name)) {
             if (typeof target[name] === "function") {
-                if (target['trigger'] && target['trigger'].triggerDocument && target['trigger'].triggerDocument._id && target['trigger'].triggerType){
+                if (CloudmateWorker.logQueue && target['trigger'] && target['trigger'].triggerDocument && target['trigger'].triggerDocument._id && target['trigger'].triggerType){
                     const workLogData:WorkLog = {
                             name: target.name,
                             startTime: new Date(),
@@ -45,7 +45,7 @@ export const objectIntercept = {
                             status: workExecStatus.processing,
                     }
 
-                    logQueue.add(jobsForLogsWorker.log, workLogData, {
+                    CloudmateWorker.logQueue.add(jobsForLogsWorker.log, workLogData, {
                         removeOnComplete: true,
                         removeOnFail: true,
                     }).catch((err) => {

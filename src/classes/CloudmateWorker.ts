@@ -1,7 +1,7 @@
 import {WorkFunction} from "../interaces/worker.interface";
 import Redis from "ioredis";
 import * as os from "os";
-import {Job, Worker} from "bullmq";
+import {Job, Queue, Worker} from "bullmq";
 import ExecutedCommand, {
     ExecutedCommandDocument
 } from "../models/ExecutedCommand.model";
@@ -25,7 +25,7 @@ export class CloudmateWorker {
     private readonly queueName: string;
     private readonly workerJWT: string;
     private cm2DBURL: string;
-
+    public static logQueue:Queue
     constructor(queueName: string, workerJWT: string, cm2DBURL: string, redisURL: string) {
         this.queueName = queueName;
         this.workerJWT = workerJWT;
@@ -38,6 +38,9 @@ export class CloudmateWorker {
     }
 
     initiate() {
+
+        CloudmateWorker.logQueue = new Queue('cm_log_queue', { connection: this.redisConnection });
+
         const systemCpuCores = os.cpus();
         connectToMongoDB(this.cm2DBURL).then(() => {
             const bullmqWorker = new Worker(this.queueName, async (job: Job) => {
@@ -93,7 +96,6 @@ export class CloudmateWorker {
             });
 
             bullmqWorker.on('failed', async (job, e) => {
-                console.log(e);
                 if (job && e instanceof CloudmateException) {
                     const data = job.data as JobData;
                     const executedCommandDocument: ExecutedCommandDocument = new ExecutedCommand(data.executedCommandDocument);
@@ -101,7 +103,7 @@ export class CloudmateWorker {
                     executedCommandDocument.set("execStatus", CommandExecStatus.failed);
                     await executedCommandDocument.save();
                     const cm2Client = new Cloudmate2API(this.workerJWT, data.organizationId);
-                    await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, true);
+                    await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, e.useSimone,e.uncompleteSourceTask);
                 }
             });
         });
