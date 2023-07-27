@@ -1,5 +1,12 @@
 # cm2-worker
 
+## 2.6.2
+
+### Patch Changes
+
+- d7ba759: https://app.asana.com/0/445384129536859/1205137419101239
+- 7794a69: Remove console.logs
+
 ## 2.6.1
 
 ### Patch Changes
