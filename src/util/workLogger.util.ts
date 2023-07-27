@@ -35,14 +35,9 @@ export const functionIntercept = {
 };
 export const objectIntercept = {
     get: function (target: any, name: string, receiver: any): any {
-        console.log('get intercept');
-        console.log(name);
         if (target.hasOwnProperty(name)) {
-            console.log('hasOwnProperty');
             if (typeof target[name] === "function") {
-                console.log('is function');
                 if (CloudmateWorker.logQueue && target['trigger'] && target['trigger'].triggerDocument && target['trigger'].triggerDocument._id && target['trigger'].triggerType){
-                    console.log('Check pass');
                     const workLogData:WorkLog = {
                             name: name,
                             startTime: new Date(),
@@ -50,7 +45,6 @@ export const objectIntercept = {
                             workType: workType.api,
                             status: workExecStatus.processing,
                     }
-
                     CloudmateWorker.logQueue.add(jobsForLogsWorker.log, workLogData, {
                         removeOnComplete: true,
                         removeOnFail: true,
