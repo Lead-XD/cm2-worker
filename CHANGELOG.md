@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.6.1
+
+### Patch Changes
+
+- 634d382: Fix createException function in Cloudmate2API class
+
 ## 2.6.0
 
 ### Minor Changes
