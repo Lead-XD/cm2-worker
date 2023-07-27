@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.6.0
+
+### Minor Changes
+
+- 678390d: Various fixes
+
 ## 2.5.1
 
 ### Patch Changes
