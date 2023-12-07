@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.7.0
+
+### Minor Changes
+
+- 1e2e403: Changes made to AsanaTask model
+
 ## 2.6.2
 
 ### Patch Changes
