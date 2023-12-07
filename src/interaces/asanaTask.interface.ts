@@ -63,8 +63,16 @@ export interface AsanaTaskDocumentInterface {
     name: string;
   };
   permalinkUrl: string;
+  attachments: Attachment[];
 }
 
+interface Attachment {
+    gid: string,
+    createdAt: string,
+    permanentURL: string,
+    name: string,
+    host: string,
+}
 interface Dependency {
   gid: string;
   resourceType: string;

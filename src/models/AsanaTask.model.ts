@@ -118,6 +118,13 @@ const asanaTaskSchema = new mongoose.Schema<AsanaTaskDocument>(
                         name: {type: String, required: true},
                     }
                 },
+                multiEnumValues: [{
+                    required: false,
+                    type: {
+                        gid: {type: String, required: true},
+                        name: {type: String, required: true},
+                    }
+                }],
                 displayValue: {type: String},
                 description: {type: String},
             },
@@ -154,9 +161,16 @@ const asanaTaskSchema = new mongoose.Schema<AsanaTaskDocument>(
             name: {type: String, required: true},
         },
         permalinkUrl: {type: String, required: true},
+        attachments: [{
+            gid: {type: String, required: true},
+            createdAt: {type: String, required: true},
+            permanentURL: {type: String, required: true},
+            name: {type: String, required: true},
+            host: {type: String, required: true},
+        }]
     },
     {
-        timestamps: { createdAt: "createdAt_", updatedAt:"updatedAt_" },
+        timestamps: {createdAt: "createdAt_", updatedAt: "updatedAt_"},
         strict: true
     }
 );
