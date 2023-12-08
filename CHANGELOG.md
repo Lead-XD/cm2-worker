@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.8.0
+
+### Minor Changes
+
+- 1ac99ba: Package will stop using mongoose default connection. So that the consumer can use mongoose default connection.
+
 ## 2.7.0
 
 ### Minor Changes
