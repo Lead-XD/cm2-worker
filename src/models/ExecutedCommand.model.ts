@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import {CommandExecStatus} from "../constants/command.constants";
 import {ExecutedCommandDocumentType} from "../interaces/command.interface";
+import connectToCM2DB from "../config/database.config";
 
 
 export type ExecutedCommandDocument =
@@ -27,7 +28,7 @@ const executedCommandSchema = new mongoose.Schema<ExecutedCommandDocument>(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Project"
         },
-        exception:{
+        exception: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Exception"
         },
@@ -41,12 +42,16 @@ const executedCommandSchema = new mongoose.Schema<ExecutedCommandDocument>(
     }
 );
 
-let ExecutedCommandModel;
+let ExecutedCommand;
+const cm2DBConnection = connectToCM2DB(process.env.CM2_MONGODB_URI!)
+if (cm2DBConnection) {
+    try {
 
-try {
-    ExecutedCommandModel = mongoose.model("ExecutedCommand");
-} catch (e) {
-    ExecutedCommandModel = mongoose.model<ExecutedCommandDocument>("ExecutedCommand", executedCommandSchema);
+        ExecutedCommand = cm2DBConnection.model("ExecutedCommand");
+    } catch (e) {
+        ExecutedCommand = cm2DBConnection.model<ExecutedCommandDocument>("ExecutedCommand", executedCommandSchema);
+    }
 }
 
-export default ExecutedCommandModel as mongoose.Model<ExecutedCommandDocument>;
+
+export default ExecutedCommand as mongoose.Model<ExecutedCommandDocument>;

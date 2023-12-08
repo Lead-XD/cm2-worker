@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 import {AsanaEventSources} from "../constants/constants";
-import { asanaEventDocumentInterface } from "../interaces/asanaEvent.interface";
-export type AsanaEventDocument = mongoose.Document & asanaEventDocumentInterface;
+import {asanaEventDocumentInterface} from "../interaces/asanaEvent.interface";
+import connectToCM2DB from "../config/database.config";
+
+export type AsanaEventDocument =
+    mongoose.Document
+    & asanaEventDocumentInterface;
 
 const asanaEventSchema = new mongoose.Schema<AsanaEventDocument>(
     {
@@ -13,23 +17,23 @@ const asanaEventSchema = new mongoose.Schema<AsanaEventDocument>(
             resourceType: String,
         },
         createdAt: Date,
-        action:String,
-        
-        change:{
+        action: String,
+
+        change: {
             action: String,
             field: String,
             addedValue: {
                 gid: String,
                 resourceType: String,
-                user:{
+                user: {
                     gid: String,
                     resourceType: String,
                 }
             },
         },
-        
+
         field: String,
-        
+
         newValue: {
             gid: String,
             resourceType: String,
@@ -48,27 +52,29 @@ const asanaEventSchema = new mongoose.Schema<AsanaEventDocument>(
             resourceType: String,
             resourceSubtype: String
         },
-        cm:{
+        cm: {
             project: String,
-            projectGID:String,
-            projectType:String,
-            source:{
-                type:String,
-                enum:Object.values(AsanaEventSources)
+            projectGID: String,
+            projectType: String,
+            source: {
+                type: String,
+                enum: Object.values(AsanaEventSources)
             },
-            identifier: {type:String,unique:true},
+            identifier: {type: String, unique: true},
             processed: Boolean,
-            exception:{type:mongoose.Schema.Types.ObjectId, ref: "Exception"},
+            exception: {type: mongoose.Schema.Types.ObjectId, ref: "Exception"},
         }
     },
-    { timestamps: { createdAt: "receivedAt", updatedAt:"updatedAt" } }
+    {timestamps: {createdAt: "receivedAt", updatedAt: "updatedAt"}}
 );
 let AsanaEvent;
-
-try{
-    AsanaEvent  = mongoose.model("AsanaEvent");
-}catch(e){
-    AsanaEvent =  mongoose.model<AsanaEventDocument>("AsanaEvent", asanaEventSchema);
+const cm2DBConnection = connectToCM2DB(process.env.CM2_MONGODB_URI!)
+if (cm2DBConnection) {
+    try {
+        AsanaEvent = cm2DBConnection.model("AsanaEvent");
+    } catch (e) {
+        AsanaEvent = cm2DBConnection.model<AsanaEventDocument>("AsanaEvent", asanaEventSchema);
+    }
 }
 
 

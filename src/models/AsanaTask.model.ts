@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import {AsanaTaskDocumentInterface} from "../interaces/asanaTask.interface";
+import connectToCM2DB from "../config/database.config";
 
 
 export type AsanaTaskDocument = mongoose.Document & AsanaTaskDocumentInterface;
@@ -176,11 +177,14 @@ const asanaTaskSchema = new mongoose.Schema<AsanaTaskDocument>(
 );
 
 let AsanaTask;
-
-try {
-    AsanaTask = mongoose.model("AsanaTask");
-} catch (e) {
-    AsanaTask = mongoose.model<AsanaTaskDocument>("AsanaTask", asanaTaskSchema);
+const cm2DBConnection = connectToCM2DB(process.env.CM2_MONGODB_URI!)
+if (cm2DBConnection) {
+    try {
+        AsanaTask = cm2DBConnection.model("AsanaTask");
+    } catch (e) {
+        AsanaTask = cm2DBConnection.model<AsanaTaskDocument>("AsanaTask", asanaTaskSchema);
+    }
 }
+
 
 export default AsanaTask as mongoose.Model<AsanaTaskDocument>;

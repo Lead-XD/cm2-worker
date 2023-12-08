@@ -5,6 +5,7 @@ import {
     EventSources
 } from "../constants/eventFilter.constants";
 import {EventFilterDocumentInterface} from "../interaces/eventFilter.interface";
+import connectToCM2DB from "../config/database.config";
 
 
 export type EventFilterDocument =
@@ -29,7 +30,7 @@ const eventFilterSchema = new mongoose.Schema<EventFilterDocument>(
             type: String,
             enum: Object.values(EventFilterTypes),
         },
-        match:String
+        match: String
     },
     {
         timestamps: true
@@ -37,11 +38,14 @@ const eventFilterSchema = new mongoose.Schema<EventFilterDocument>(
 );
 
 let EventFilter;
-
-try {
-    EventFilter = mongoose.model("EventFilter");
-} catch (e) {
-    EventFilter = mongoose.model<EventFilterDocument>("EventFilter", eventFilterSchema);
+const cm2DBConnection = connectToCM2DB(process.env.CM2_MONGODB_URI!)
+if (cm2DBConnection) {
+    try {
+        EventFilter = cm2DBConnection.model("EventFilter");
+    } catch (e) {
+        EventFilter = cm2DBConnection.model<EventFilterDocument>("EventFilter", eventFilterSchema);
+    }
 }
+
 
 export default EventFilter as mongoose.Model<EventFilterDocument>;

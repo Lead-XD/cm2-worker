@@ -1,15 +1,18 @@
-import mongoose from "mongoose";
+import mongoose, {Connection} from "mongoose";
 
-const connectToMongoDB = async (mongoUrl: string): Promise<void> => {
-  try {
-    await mongoose.connect(mongoUrl, {
-      maxPoolSize: 10,
-    });
-    console.log("MongoDB connected successfully!");
-  } catch (error) {
-    console.error(`MongoDB connection error: ${error}`);
-    process.exit(1);
-  }
+
+export let cm2DBConnection: Connection | undefined;
+const connectToCM2DB = (mongoUrl: string) => {
+    try {
+        if (!cm2DBConnection)
+            cm2DBConnection = mongoose.createConnection(mongoUrl, {
+                maxPoolSize: 10,
+            });
+        return cm2DBConnection;
+    } catch (error) {
+        console.error(`MongoDB connection error: ${error}`);
+        process.exit(1);
+    }
 };
 
-export default connectToMongoDB;
+export default connectToCM2DB;
