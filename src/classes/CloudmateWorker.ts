@@ -26,7 +26,7 @@ export class CloudmateWorker {
     private readonly workerJWT: string;
     public static logQueue: Queue
 
-    constructor(queueName: string, workerJWT: string, cm2DBURL: string, redisURL: string) {
+    constructor(queueName: string, workerJWT: string, redisURL: string) {
         this.queueName = queueName;
         this.workerJWT = workerJWT;
         this.redisConnection = new Redis(redisURL);

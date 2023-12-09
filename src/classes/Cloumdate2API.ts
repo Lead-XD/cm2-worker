@@ -15,7 +15,8 @@ export class Cloudmate2API {
             updateTaskBatch: this.baseURL + "/task/updateTaskBatch",
             addTaskToProject: this.baseURL + "/task/addTaskToProject",
             removeTaskFromProject: this.baseURL + "/task/removeTaskFromProject",
-
+            createTask: this.baseURL + "/task/createTask",
+            createSubTask: this.baseURL + "/task/createSubTask"
         },
         customfield:{
             getCustomFieldSettingsForProject: this.baseURL + "/customfield/getCustomFieldSettingsForProject"
@@ -40,7 +41,6 @@ export class Cloudmate2API {
 
     task = {
         getTask: async (taskGID: string) => {
-
             const response = await axios.get(`${this.urlMap.task.getTask}?taskGID=${taskGID}`, {
                 headers: {...this.authHeaders}
             });
@@ -48,8 +48,24 @@ export class Cloudmate2API {
                 return response.data;
             }
         },
-        updateTask: async (taskGID: string, data: any) => {
-            const response = await axios.put(this.urlMap.task.updateTask, {gid: taskGID, ...data}, {
+        updateTask: async (taskGID: string, taskData: any) => {
+            const response = await axios.put(this.urlMap.task.updateTask, {gid: taskGID, ...taskData}, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        createTask: async (data: any) => {
+            const response = await axios.post(this.urlMap.task.createTask, data, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        createSubTask: async (parentTaskGID: string, subTaskData: any) => {
+            const response = await axios.post(this.urlMap.task.createSubTask, {parentTaskGID: parentTaskGID, subTaskData:subTaskData}, {
                 headers: {...this.authHeaders}
             });
             if (response) {
@@ -57,7 +73,7 @@ export class Cloudmate2API {
             }
         },
         updateTasksBatch: async (tasksData: any) => {
-            const response = await axios.put(this.urlMap.task.updateTaskBatch, {tasks: tasksData}, {
+            const response = await axios.put(this.urlMap.task.updateTaskBatch, tasksData, {
                 headers: {...this.authHeaders}
             });
             if (response) {
