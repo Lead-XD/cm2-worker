@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.10.0
+
+### Minor Changes
+
+- 6c2c858: Add getCustomFieldSettingsForProject, createTask and createSubTask functions to Cloudmate2API
+
 ## 2.9.0
 
 ### Minor Changes
