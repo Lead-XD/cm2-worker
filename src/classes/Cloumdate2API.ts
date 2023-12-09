@@ -15,10 +15,15 @@ export class Cloudmate2API {
             updateTaskBatch: this.baseURL + "/task/updateTaskBatch",
             addTaskToProject: this.baseURL + "/task/addTaskToProject",
             removeTaskFromProject: this.baseURL + "/task/removeTaskFromProject",
-            postStoryOnTask: this.baseURL + "/task/postStoryOnTask"
+
+        },
+        customfield:{
+            getCustomFieldSettingsForProject: this.baseURL + "/customfield/getCustomFieldSettingsForProject"
         },
         project: {},
-        story: {},
+        story: {
+            postStoryOnTask: this.baseURL + "/story/postStoryOnTask"
+        },
         exception: {
             createException: this.baseURL + "/exception/createException"
         }
@@ -33,68 +38,83 @@ export class Cloudmate2API {
         }
     }
 
+    task = {
+        getTask: async (taskGID: string) => {
 
-    postStoryOnTask = async (taskGID: string, text: string, htmlText?: string, isPinned: boolean = false) => {
-        const response = await axios.post(this.urlMap.task.postStoryOnTask, {
-            taskGID: taskGID,
-            text: text,
-            htmlText: htmlText,
-            isPinned: isPinned
-        }, {
-            headers: {...this.authHeaders}
-        });
-        if (response) {
-            return response.data;
+            const response = await axios.get(`${this.urlMap.task.getTask}?taskGID=${taskGID}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        updateTask: async (taskGID: string, data: any) => {
+            const response = await axios.put(this.urlMap.task.updateTask, {gid: taskGID, ...data}, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        updateTasksBatch: async (tasksData: any) => {
+            const response = await axios.put(this.urlMap.task.updateTaskBatch, {tasks: tasksData}, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        addTaskToProject: async (taskGID: string, projectGID: string) => {
+            const response = await axios.put(this.urlMap.task.addTaskToProject, {
+                taskGID: taskGID,
+                projectGID: projectGID
+            }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        removeTaskFromProject: async (taskGID: string, projectGID: string) => {
+            const response = await axios.put(this.urlMap.task.removeTaskFromProject, {
+                taskGID: taskGID,
+                projectGID: projectGID
+            }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
         }
     }
 
-    getTask = async (taskGID: string) => {
+    story = {
+        postStoryOnTask : async (taskGID: string, text: string, htmlText?: string, isPinned: boolean = false) => {
+            const response = await axios.post(this.urlMap.story.postStoryOnTask, {
+                taskGID: taskGID,
+                text: text,
+                htmlText: htmlText,
+                isPinned: isPinned
+            }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        }
+    }
+    customfield={
+        getCustomFieldSettingsForProject: async (projectGID: string) => {
+            const response = await axios.get(`${this.urlMap.customfield.getCustomFieldSettingsForProject}?projectGID=${projectGID}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        }
+    }
 
-        const response = await axios.get(`${this.urlMap.task.getTask}?taskGID=${taskGID}`, {
-            headers: {...this.authHeaders}
-        });
-        if (response) {
-            return response.data;
-        }
-    }
-    updateTask = async (taskGID: string, data: any) => {
-        const response = await axios.put(this.urlMap.task.updateTask, {gid: taskGID, ...data}, {
-            headers: {...this.authHeaders}
-        });
-        if (response) {
-            return response.data;
-        }
-    }
-    updateTasksBatch = async (tasksData: any) => {
-        const response = await axios.put(this.urlMap.task.updateTaskBatch, {tasks: tasksData}, {
-            headers: {...this.authHeaders}
-        });
-        if (response) {
-            return response.data;
-        }
-    }
-    addTaskToProject = async (taskGID: string, projectGID: string) => {
-        const response = await axios.put(this.urlMap.task.addTaskToProject, {
-            taskGID: taskGID,
-            projectGID: projectGID
-        }, {
-            headers: {...this.authHeaders}
-        });
-        if (response) {
-            return response.data;
-        }
-    }
-    removeTaskFromProject = async (taskGID: string, projectGID: string) => {
-        const response = await axios.put(this.urlMap.task.removeTaskFromProject, {
-            taskGID: taskGID,
-            projectGID: projectGID
-        }, {
-            headers: {...this.authHeaders}
-        });
-        if (response) {
-            return response.data;
-        }
-    }
+
     createException = async (cloudmateException: CloudmateException, triggerID: mongoose.Types.ObjectId, sourceTaskGID: string, parentTaskGID?: string, useSimone: boolean = false, uncompleteSource: boolean = false) => {
         const data = {
             sourceTaskGID: sourceTaskGID,

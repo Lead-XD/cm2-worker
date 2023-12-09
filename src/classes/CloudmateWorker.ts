@@ -85,6 +85,7 @@ export class CloudmateWorker {
         });
 
         bullmqWorker.on('completed', async (job: Job) => {
+            console.log(`Job Completed ${job?.name},${job?.id}`)
             const data = job.data as JobData;
             const executedCommandDocument: ExecutedCommandDocument = new ExecutedCommand(data.executedCommandDocument);
             executedCommandDocument.isNew = false;
@@ -93,6 +94,7 @@ export class CloudmateWorker {
         });
 
         bullmqWorker.on('failed', async (job, e) => {
+            console.log(`Job Failed ${job?.name},${job?.id}`)
             if (job && e instanceof CloudmateException) {
                 const data = job.data as JobData;
                 const executedCommandDocument: ExecutedCommandDocument = new ExecutedCommand(data.executedCommandDocument);
