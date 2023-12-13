@@ -76,7 +76,7 @@ export class CloudmateWorker {
             }
             const workFunction = this.registeredJobs.get(job.name);
             if (workFunction) {
-                workFunction(commandCTX, commandExecutionData);
+                await workFunction(commandCTX, commandExecutionData);
             }
 
         }, {
