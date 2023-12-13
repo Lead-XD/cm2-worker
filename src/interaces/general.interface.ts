@@ -8,6 +8,8 @@ import {workTriggerType} from "../constants/logs.constants";
 export interface JobData {
     commandId: mongoose.Types.ObjectId,
     organizationId: mongoose.Types.ObjectId,
+    appId: mongoose.Types.ObjectId,
+    workspaceGID: string,
     projectDocument: ProjectDocument,
     asanaTaskDocument: AsanaTaskDocument,
     eventDocument: AsanaEventDocument,

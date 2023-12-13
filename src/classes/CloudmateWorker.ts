@@ -61,6 +61,8 @@ export class CloudmateWorker {
             const commandCTX: CommandContext = {
                 organizationId: data.organizationId,
                 commandId: data.commandId,
+                workspaceGID: data.workspaceGID,
+                appId: data.appId,
                 projectDocument: projectDocument,
                 eventDocument: asanaEventDocument,
                 trigger: {
@@ -76,6 +78,7 @@ export class CloudmateWorker {
             }
             const workFunction = this.registeredJobs.get(job.name);
             if (workFunction) {
+                //Do not remove the await from the following line!!!!!
                 await workFunction(commandCTX, commandExecutionData);
             }
 

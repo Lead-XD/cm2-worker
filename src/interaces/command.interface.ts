@@ -33,6 +33,8 @@ export interface CommandContext  {
     eventDocument: AsanaEventDocument,
     trigger:TriggerContext,
     workerId: mongoose.Types.ObjectId,
+    appId: mongoose.Types.ObjectId,
+    workspaceGID: string,
 }
 export interface CommandExecutionData {
     asanaTaskDocument:AsanaTaskDocument,
