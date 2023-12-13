@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.10.1
+
+### Patch Changes
+
+- 97ba703: Worker should proccess jobs async
+
 ## 2.10.0
 
 ### Minor Changes
