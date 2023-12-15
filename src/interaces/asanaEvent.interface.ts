@@ -33,13 +33,12 @@ export interface asanaEventDocumentInterface {
     createdAt?: Timestamp;
     action?:string;
     change?:{
-        action:string;
-        field:string;
-        addedValue:addedValueType;
+        action: string;
+        field: string;
+        addedValue?: addedValueType;
+        newValue?: gidResourceType;
+        removedValue?: gidResourceType;
     }
-    field?: string;
-    newValue?: gidResourceType;
-    removedValue?: gidResourceType;
     resource?: gidResourceTypeSubType;
     parent?:gidResourceTypeSubType;
     cm:cloudmateProjectData

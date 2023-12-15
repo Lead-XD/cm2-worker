@@ -30,17 +30,14 @@ const asanaEventSchema = new mongoose.Schema<AsanaEventDocument>(
                     resourceType: String,
                 }
             },
-        },
-
-        field: String,
-
-        newValue: {
-            gid: String,
-            resourceType: String,
-        },
-        removedValue: {
-            gid: String,
-            resourceType: String,
+            newValue: {
+                gid: String,
+                resourceType: String,
+            },
+            removedValue: {
+                gid: String,
+                resourceType: String,
+            },
         },
         resource: {
             gid: String,
