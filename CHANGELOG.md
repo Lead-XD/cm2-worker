@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.10.2
+
+### Patch Changes
+
+- 5814da6: Fix AsanaEvent interface and model.
+
 ## 2.10.1
 
 ### Patch Changes
