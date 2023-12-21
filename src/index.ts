@@ -9,6 +9,7 @@ import Project from "./models/Project.model";
 export {CloudmateException,UnknownException} from "./classes/CloudmateException";
 export {CloudmateWorker} from "./classes/CloudmateWorker";
 export {Cloudmate2API} from "./classes/Cloumdate2API";
+export {CloudmateLogger} from "./classes/CloudmateLogger";
 
 
 //Exported Constants
@@ -18,7 +19,8 @@ export {
     cloudmateExceptionDescriptions,
     AsanaExceptionDescriptions
 } from "./constants/exception.constants";
-export {workExecStatus} from "./constants/logs.constants";
+export {workExecStatus,logLevels} from "./constants/logs.constants";
+
 
 //Exported types and interfaces
 export {

@@ -21,6 +21,16 @@ Before running the worker, make sure you have the following prerequisites instal
    3. **CM2_MONGODB_URI** - the URI of the CM2 MongoDB database
    4. **REDIS_URL** - the URL of the Redis database
    5. **CLOUDMATE2_BASE_API_URL** - Cloudmate2 openapi url
+   6. **LOG_LEVEL** - the log level of the worker. The default log level is 
+      'verbose' if not defined in .env. To see all log levels import logLevels 
+      from the cm2-worker. Following log levels are available:
+      - error
+      - warn
+      - info
+      - http
+      - verbose
+      - debug
+      - silly
 3. Make sure the relevant commands and workers are setup inside CM2 using 
    CM2 API. 
 
@@ -211,6 +221,45 @@ export const foo = async (commandCTX: CommandContext, data:CommandExecutionData)
 }
 
 ```
+
+## Process Logging
+The package provides a logger class that can be used to log the process of the worker. The logs are printed on the CLI and in CM2 MongoDB in the 'logs' collection.
+
+The logger class object is provided by the cm2-worker through the commandCTX object 'commandCTX.cloudmateLogger'.
+
+
+```typescript
+commandCTX.cloudmateLogger.log(logLevels.info, 'Starting execution');
+````
+
+### Log Levels
+The log level can be configured in the .env file using LOG_LEVEL variable. The default log level is 'verbose' if not defined in .env.
+
+To see all log levels import logLevels from the cm2-worker. Following log levels are available:
+
+```typescript
+import {
+    logLevels,
+} from "cm2-worker";
+
+//error
+//warn
+//info
+//http
+//verbose
+//debug
+//silly
+
+```
+
+The logs are saved in the logs collection with following properties:
+* timestamp
+* level
+* message
+
+The message is a string and has a format of 'triggerDocumentId-string' 
+
+
 
 ## License
 

@@ -17,6 +17,7 @@ import ExecutedCommand, {
 } from "../models/ExecutedCommand.model";
 import {JobData} from "../interaces/general.interface";
 import {workTriggerType} from "../constants/logs.constants";
+import {CloudmateLogger} from "./CloudmateLogger";
 
 
 export class CloudmateWorker {
@@ -57,7 +58,7 @@ export class CloudmateWorker {
 
             const asanaTaskDocument: AsanaTaskDocument = new AsanaTask(data.asanaTaskDocument);
             asanaTaskDocument.isNew = false;
-
+            const cloudmateLogger = new CloudmateLogger(executedCommandDocument._id);
             const commandCTX: CommandContext = {
                 organizationId: data.organizationId,
                 commandId: data.commandId,
@@ -71,11 +72,13 @@ export class CloudmateWorker {
                 },
                 workerId: data.workerId,
                 jobName: job.name,
+                cloudmateLogger: cloudmateLogger
             }
             const commandExecutionData: CommandExecutionData = {
                 asanaTaskDocument: asanaTaskDocument,
                 resource: data.resource,
             }
+
             const workFunction = this.registeredJobs.get(job.name);
             if (workFunction) {
                 //Do not remove the await from the following line!!!!!
