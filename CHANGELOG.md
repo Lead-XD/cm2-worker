@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.11.0
+
+### Minor Changes
+
+- e227a7e: Add logging functionality to cm2-worker
+
 ## 2.10.2
 
 ### Patch Changes
