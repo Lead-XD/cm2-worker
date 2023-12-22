@@ -21,9 +21,14 @@ export class Cloudmate2API {
         customfield:{
             getCustomFieldSettingsForProject: this.baseURL + "/customfield/getCustomFieldSettingsForProject"
         },
-        project: {},
+        project: {
+            getProjectByGID: this.baseURL + "/project/getProjectByGID",
+            saveAllProjectsInWorkspace: this.baseURL + "/project/saveAllProjectsInWorkspace"
+        },
         story: {
-            postStoryOnTask: this.baseURL + "/story/postStoryOnTask"
+            postStoryOnTask: this.baseURL + "/story/postStoryOnTask",
+            postNotificationOnTask: this.baseURL + "/story/postNotificationOnTask",
+            updateNotificationOnTask: this.baseURL + "/story/updateNotificationOnTask"
         },
         exception: {
             createException: this.baseURL + "/exception/createException"
@@ -39,6 +44,24 @@ export class Cloudmate2API {
         }
     }
 
+    project= {
+        getProjectByGID: async (projectGID: string) => {
+            const response = await axios.get(`${this.urlMap.project.getProjectByGID}?projectGID=${projectGID}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        saveAllProjectsInWorkspace: async () => {
+            const response = await axios.post(`${this.urlMap.project.saveAllProjectsInWorkspace}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        }
+    }
     task = {
         getTask: async (taskGID: string) => {
             const response = await axios.get(`${this.urlMap.task.getTask}?taskGID=${taskGID}`, {
@@ -111,6 +134,31 @@ export class Cloudmate2API {
                 text: text,
                 htmlText: htmlText,
                 isPinned: isPinned
+            }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        postNotificationOnTask : async (taskGID: string, key: string, replacements?: any, isPinned: boolean = false) => {
+            const response = await axios.post(this.urlMap.story.postNotificationOnTask, {
+                taskGID: taskGID,
+                key: key,
+                replacements: replacements,
+                isPinned: isPinned
+            }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        updateNotificationOnTask : async (storyGID: string, key: string, replacements?: any) => {
+            const response = await axios.put(this.urlMap.story.updateNotificationOnTask, {
+                storyGID: storyGID,
+                key: key,
+                replacements: replacements,
             }, {
                 headers: {...this.authHeaders}
             });
