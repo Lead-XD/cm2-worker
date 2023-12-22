@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.12.0
+
+### Minor Changes
+
+- 6e60a7a: Add postNotificationOnTask,updateNotificationOnTask,getProjectByGID and saveAllProjectsInWorkspace endpoints to Cloudmat2API class
+
 ## 2.11.0
 
 ### Minor Changes
