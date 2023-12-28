@@ -54,7 +54,7 @@ export class Cloudmate2API {
             }
         },
         saveAllProjectsInWorkspace: async () => {
-            const response = await axios.post(`${this.urlMap.project.saveAllProjectsInWorkspace}`, {
+            const response = await axios.post(`${this.urlMap.project.saveAllProjectsInWorkspace}`,{} ,{
                 headers: {...this.authHeaders}
             });
             if (response) {
