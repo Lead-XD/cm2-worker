@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.12.1
+
+### Patch Changes
+
+- f94045e: Fix saveAllProjectsInWorkspace sdk function
+
 ## 2.12.0
 
 ### Minor Changes
