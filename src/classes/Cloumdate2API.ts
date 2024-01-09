@@ -16,7 +16,12 @@ export class Cloudmate2API {
             addTaskToProject: this.baseURL + "/task/addTaskToProject",
             removeTaskFromProject: this.baseURL + "/task/removeTaskFromProject",
             createTask: this.baseURL + "/task/createTask",
-            createSubTask: this.baseURL + "/task/createSubTask"
+            createSubTask: this.baseURL + "/task/createSubTask",
+        },
+        section:{
+            getSectionsInProject: this.baseURL + "/section/getSectionsInProject",
+            createSectionInProject: this.baseURL + "/section/createSectionInProject",
+            addTaskToSection: this.baseURL + "/section/addTaskToSection",
         },
         customfield:{
             getCustomFieldSettingsForProject: this.baseURL + "/customfield/getCustomFieldSettingsForProject"
@@ -159,6 +164,42 @@ export class Cloudmate2API {
                 storyGID: storyGID,
                 key: key,
                 replacements: replacements,
+            }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        }
+    }
+    section={
+        getSectionsInProject: async (projectGID: string) => {
+            const response = await axios.get(`${this.urlMap.section.getSectionsInProject}?projectGID=${projectGID}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        createSectionInProject: async (projectGID: string, sectionName: string,insertBefore?:string,insertAfter?:string) => {
+            const response = await axios.post(this.urlMap.section.createSectionInProject, {
+                projectGID: projectGID,
+                name: sectionName,
+                insertBefore: insertBefore,
+                insertAfter: insertAfter
+            }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        addTaskToSection: async (taskGID: string, sectionGID: string, insertBefore?: string, insertAfter?: string) => {
+            const response = await axios.post(this.urlMap.section.addTaskToSection, {
+                taskGID: taskGID,
+                sectionGID: sectionGID,
+                insertBefore: insertBefore,
+                insertAfter: insertAfter
             }, {
                 headers: {...this.authHeaders}
             });

@@ -114,7 +114,7 @@ interface Membership {
   };
 }
 
-interface CustomField {
+export interface CustomField {
   gid: string;
   name: string;
   type: string;
