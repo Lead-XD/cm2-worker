@@ -1,5 +1,12 @@
 # cm2-worker
 
+## 2.13.0
+
+### Minor Changes
+
+- 9a84ace: Add sections API endpoints to the Cloudmate2API class
+- 325252d: Update Projects model
+
 ## 2.12.1
 
 ### Patch Changes
