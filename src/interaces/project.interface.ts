@@ -5,6 +5,9 @@ import {ChannelDetails} from "./channel.interface";
 import {VariableTypes} from "../constants/variable.constants";
 import {CommandDocument} from "../models/Command.model";
 import {CommandStatus} from "../constants/command.constants";
+import {AsanaResourceInterface} from "./asana.interface";
+import {CustomField} from "./asanaTask.interface";
+import {AsanaResourceTypes} from "../constants/asana.constants";
 
 
 export interface ProjectVariable {
@@ -28,5 +31,27 @@ export interface ProjectDocumentInterface {
     commands: {
         id: mongoose.Types.ObjectId | CommandDocument,
         status: CommandStatus,
-    }[]
+    }[],
+    resourceType: AsanaResourceTypes;
+    archived: boolean;
+    color: string;
+    createdAt: Date;
+    defaultView: string;
+    dueDate: Date;
+    dueOn: Date;
+    htmlNotes: string;
+    members:[AsanaResourceInterface];
+    modifiedAt: Date;
+    notes: string;
+    public: boolean;
+    startOn: Date;
+    customFields:[CustomField];
+    completed: boolean;
+    completedAt: Date;
+    completedBy: AsanaResourceInterface;
+    followers: [AsanaResourceInterface];
+    owner: AsanaResourceInterface;
+    icon: string;
+    permalinkUrl: string;
+    createdFromTemplate: AsanaResourceInterface;
 }
