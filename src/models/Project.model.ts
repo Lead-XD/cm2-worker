@@ -6,7 +6,7 @@ import {ProjectTypes} from "../constants/project.constants";
 import {VariableTypes} from "../constants/variable.constants";
 import {ChannelStatus} from "../constants/channel.constants";
 import {CommandStatus} from "../constants/command.constants";
-import {ProjectDocumentInterface} from "../interaces/project.interface";
+import {ProjectDocumentInterface} from "../interfaces/project.interface";
 import connectToCM2DB from "../config/database.config";
 
 export type ProjectDocument = mongoose.Document & ProjectDocumentInterface;

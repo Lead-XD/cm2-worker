@@ -7,6 +7,8 @@ const connectToCM2DB = (mongoUrl: string) => {
         if (!cm2DBConnection)
             cm2DBConnection = mongoose.createConnection(mongoUrl, {
                 maxPoolSize: 10,
+                connectTimeoutMS: 45000,
+                socketTimeoutMS: 45000,
             });
         return cm2DBConnection;
     } catch (error) {

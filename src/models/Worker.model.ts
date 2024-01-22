@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {WorkerDocumentInterface} from "../interaces/command.interface";
+import {WorkerDocumentInterface} from "../interfaces/command.interface";
 import connectToCM2DB from "../config/database.config";
 
 

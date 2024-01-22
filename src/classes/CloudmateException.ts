@@ -1,7 +1,7 @@
 import {
     CloudmateExceptionMetaData,
     CloudmateExceptionType
-} from "../interaces/cloudmateException.interface";
+} from "../interfaces/cloudmateException.interface";
 import {CloudmateExceptionTypes} from "../constants/exception.constants";
 import mongoose from "mongoose";
 

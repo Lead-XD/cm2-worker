@@ -3,6 +3,7 @@ import AsanaTask from "./models/AsanaTask.model";
 import Command from "./models/Command.model";
 import ExecutedCommand from "./models/ExecutedCommand.model";
 import Project from "./models/Project.model";
+import AsanaComment from "./models/AsanaComment.model";
 
 
 //Exported Classes
@@ -27,12 +28,12 @@ export {
     TriggerContext,
     CommandContext,
     CommandExecutionData
-} from "./interaces/command.interface";
+} from "./interfaces/command.interface";
 
-export {Context} from "./interaces/general.interface";
+export {Context} from "./interfaces/general.interface";
 
-export {WorkFunction} from "./interaces/worker.interface";
-export {CloudmateExceptionType} from "./interaces/cloudmateException.interface";
+export {WorkFunction} from "./interfaces/worker.interface";
+export {CloudmateExceptionType} from "./interfaces/cloudmateException.interface";
 
 
 //Exported helper and utils functions
@@ -48,6 +49,7 @@ export {AsanaTaskDocument} from "./models/AsanaTask.model";
 export {CommandDocument} from "./models/Command.model";
 export {ExecutedCommandDocument} from "./models/ExecutedCommand.model";
 export {ProjectDocument} from "./models/Project.model";
+export {AsanaCommentDocument} from "./models/AsanaComment.model";
 
 
 //Exported Models
@@ -56,5 +58,6 @@ export const models = {
     AsanaTask,
     Command,
     ExecutedCommand,
-    Project
+    Project,
+    AsanaComment
 }

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import {AsanaEventSources} from "../constants/constants";
-import {asanaEventDocumentInterface} from "../interaces/asanaEvent.interface";
+import {asanaEventDocumentInterface} from "../interfaces/asanaEvent.interface";
 import connectToCM2DB from "../config/database.config";
 
 export type AsanaEventDocument =

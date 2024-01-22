@@ -4,7 +4,7 @@ import {
     EventFilterTypes,
     EventSources
 } from "../constants/eventFilter.constants";
-import {EventFilterDocumentInterface} from "../interaces/eventFilter.interface";
+import {EventFilterDocumentInterface} from "../interfaces/eventFilter.interface";
 import connectToCM2DB from "../config/database.config";
 
 

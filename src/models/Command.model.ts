@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import {CommandStatus} from "../constants/command.constants";
-import {CommandDocumentInterface} from "../interaces/command.interface";
+import {CommandDocumentInterface} from "../interfaces/command.interface";
 import connectToCM2DB from "../config/database.config";
 
 

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {AsanaTaskDocumentInterface} from "../interaces/asanaTask.interface";
+import {AsanaTaskDocumentInterface} from "../interfaces/asanaTask.interface";
 import connectToCM2DB from "../config/database.config";
 
 

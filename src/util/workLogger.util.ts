@@ -3,7 +3,7 @@ import {
     workExecStatus,
     workType
 } from "../constants/logs.constants";
-import {WorkLog} from "../interaces/logs.interface";
+import {WorkLog} from "../interfaces/logs.interface";
 import {CloudmateWorker} from "../classes/CloudmateWorker";
 
 

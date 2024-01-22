@@ -1,11 +1,11 @@
-import {WorkFunction} from "../interaces/worker.interface";
+import {WorkFunction} from "../interfaces/worker.interface";
 import Redis from "ioredis";
 import * as os from "os";
 import {Job, Queue, Worker} from "bullmq";
 import {
     CommandContext,
     CommandExecutionData
-} from "../interaces/command.interface";
+} from "../interfaces/command.interface";
 import {CommandExecStatus} from "../constants/command.constants";
 import {CloudmateException} from "./CloudmateException";
 import {Cloudmate2API} from "./Cloumdate2API";
@@ -15,7 +15,7 @@ import AsanaTask, {AsanaTaskDocument} from "../models/AsanaTask.model";
 import ExecutedCommand, {
     ExecutedCommandDocument
 } from "../models/ExecutedCommand.model";
-import {JobData} from "../interaces/general.interface";
+import {JobData} from "../interfaces/general.interface";
 import {workTriggerType} from "../constants/logs.constants";
 import {CloudmateLogger} from "./CloudmateLogger";
 
