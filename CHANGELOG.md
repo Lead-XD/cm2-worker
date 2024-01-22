@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.14.0
+
+### Minor Changes
+
+- 2517986: Create and export AsanaComment model
+
 ## 2.13.0
 
 ### Minor Changes
