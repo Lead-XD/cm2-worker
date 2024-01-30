@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.15.0
+
+### Minor Changes
+
+- 8010af8: Pass cloudmate user and owner user object to worker queues.
+
 ## 2.14.0
 
 ### Minor Changes
