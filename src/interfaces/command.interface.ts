@@ -8,6 +8,7 @@ import {ProjectDocument} from "../models/Project.model";
 import {AsanaTaskDocument} from "../models/AsanaTask.model";
 import {workTriggerType} from "../constants/logs.constants";
 import {CloudmateLogger} from "../classes/CloudmateLogger";
+import {UserDocumentInterface} from "./user.interface";
 
 
 export interface  ExecutedCommandDocumentType {
@@ -36,7 +37,10 @@ export interface CommandContext  {
     workerId: mongoose.Types.ObjectId,
     appId: mongoose.Types.ObjectId,
     workspaceGID: string,
-    cloudmateLogger:CloudmateLogger
+    cloudmateLogger:CloudmateLogger,
+    cloudmateUser:UserDocumentInterface,
+    ownerUser:UserDocumentInterface,
+
 }
 export interface CommandExecutionData {
     asanaTaskDocument:AsanaTaskDocument,

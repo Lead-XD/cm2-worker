@@ -27,13 +27,14 @@ export {workExecStatus,logLevels} from "./constants/logs.constants";
 export {
     TriggerContext,
     CommandContext,
-    CommandExecutionData
+    CommandExecutionData,
 } from "./interfaces/command.interface";
 
 export {Context} from "./interfaces/general.interface";
 
 export {WorkFunction} from "./interfaces/worker.interface";
 export {CloudmateExceptionType} from "./interfaces/cloudmateException.interface";
+export {UserDocumentInterface} from "./interfaces/user.interface";
 
 
 //Exported helper and utils functions
