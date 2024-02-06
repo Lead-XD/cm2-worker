@@ -18,17 +18,20 @@ export class Cloudmate2API {
             createTask: this.baseURL + "/task/createTask",
             createSubTask: this.baseURL + "/task/createSubTask",
         },
-        section:{
+        section: {
             getSectionsInProject: this.baseURL + "/section/getSectionsInProject",
             createSectionInProject: this.baseURL + "/section/createSectionInProject",
             addTaskToSection: this.baseURL + "/section/addTaskToSection",
         },
-        customfield:{
-            getCustomFieldSettingsForProject: this.baseURL + "/customfield/getCustomFieldSettingsForProject"
+        customfield: {
+            getCustomFieldSettingsForProject: this.baseURL + "/customfield/getCustomFieldSettingsForProject",
+            getCustomFieldsByTypeAhead: this.baseURL + "/customfield/getCustomFieldsByTypeAhead",
+
         },
         project: {
             getProjectByGID: this.baseURL + "/project/getProjectByGID",
-            saveAllProjectsInWorkspace: this.baseURL + "/project/saveAllProjectsInWorkspace"
+            saveAllProjectsInWorkspace: this.baseURL + "/project/saveAllProjectsInWorkspace",
+            getProjectsByTypeAhead: this.baseURL + "/project/getProjectsByTypeAhead",
         },
         story: {
             postStoryOnTask: this.baseURL + "/story/postStoryOnTask",
@@ -49,7 +52,7 @@ export class Cloudmate2API {
         }
     }
 
-    project= {
+    project = {
         getProjectByGID: async (projectGID: string) => {
             const response = await axios.get(`${this.urlMap.project.getProjectByGID}?projectGID=${projectGID}`, {
                 headers: {...this.authHeaders}
@@ -59,7 +62,15 @@ export class Cloudmate2API {
             }
         },
         saveAllProjectsInWorkspace: async () => {
-            const response = await axios.post(`${this.urlMap.project.saveAllProjectsInWorkspace}`,{} ,{
+            const response = await axios.post(`${this.urlMap.project.saveAllProjectsInWorkspace}`, {}, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        getProjectsByTypeAhead: async (projectName: string) => {
+            const response = await axios.get(`${this.urlMap.project.getProjectsByTypeAhead}?projectName=${projectName}`, {
                 headers: {...this.authHeaders}
             });
             if (response) {
@@ -93,7 +104,10 @@ export class Cloudmate2API {
             }
         },
         createSubTask: async (parentTaskGID: string, subTaskData: any) => {
-            const response = await axios.post(this.urlMap.task.createSubTask, {parentTaskGID: parentTaskGID, subTaskData:subTaskData}, {
+            const response = await axios.post(this.urlMap.task.createSubTask, {
+                parentTaskGID: parentTaskGID,
+                subTaskData: subTaskData
+            }, {
                 headers: {...this.authHeaders}
             });
             if (response) {
@@ -133,7 +147,7 @@ export class Cloudmate2API {
     }
 
     story = {
-        postStoryOnTask : async (taskGID: string, text: string, htmlText?: string, isPinned: boolean = false) => {
+        postStoryOnTask: async (taskGID: string, text: string, htmlText?: string, isPinned: boolean = false) => {
             const response = await axios.post(this.urlMap.story.postStoryOnTask, {
                 taskGID: taskGID,
                 text: text,
@@ -146,7 +160,7 @@ export class Cloudmate2API {
                 return response.data;
             }
         },
-        postNotificationOnTask : async (taskGID: string, key: string, replacements?: any, isPinned: boolean = false) => {
+        postNotificationOnTask: async (taskGID: string, key: string, replacements?: any, isPinned: boolean = false) => {
             const response = await axios.post(this.urlMap.story.postNotificationOnTask, {
                 taskGID: taskGID,
                 key: key,
@@ -159,7 +173,7 @@ export class Cloudmate2API {
                 return response.data;
             }
         },
-        updateNotificationOnTask : async (storyGID: string, key: string, replacements?: any) => {
+        updateNotificationOnTask: async (storyGID: string, key: string, replacements?: any) => {
             const response = await axios.put(this.urlMap.story.updateNotificationOnTask, {
                 storyGID: storyGID,
                 key: key,
@@ -172,7 +186,7 @@ export class Cloudmate2API {
             }
         }
     }
-    section={
+    section = {
         getSectionsInProject: async (projectGID: string) => {
             const response = await axios.get(`${this.urlMap.section.getSectionsInProject}?projectGID=${projectGID}`, {
                 headers: {...this.authHeaders}
@@ -181,7 +195,7 @@ export class Cloudmate2API {
                 return response.data;
             }
         },
-        createSectionInProject: async (projectGID: string, sectionName: string,insertBefore?:string,insertAfter?:string) => {
+        createSectionInProject: async (projectGID: string, sectionName: string, insertBefore?: string, insertAfter?: string) => {
             const response = await axios.post(this.urlMap.section.createSectionInProject, {
                 projectGID: projectGID,
                 name: sectionName,
@@ -208,9 +222,17 @@ export class Cloudmate2API {
             }
         }
     }
-    customfield={
+    customfield = {
         getCustomFieldSettingsForProject: async (projectGID: string) => {
             const response = await axios.get(`${this.urlMap.customfield.getCustomFieldSettingsForProject}?projectGID=${projectGID}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        getCustomFieldsByTypeAhead: async (customFieldName: string) => {
+            const response = await axios.get(`${this.urlMap.customfield.getCustomFieldsByTypeAhead}?customFieldName=${customFieldName}`, {
                 headers: {...this.authHeaders}
             });
             if (response) {
