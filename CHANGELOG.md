@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.16.0
+
+### Minor Changes
+
+- 0cf7d89: Add project and customfield typeahaed APIs
+
 ## 2.15.0
 
 ### Minor Changes
