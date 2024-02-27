@@ -73,8 +73,8 @@ export class CloudmateWorker {
                 workerId: data.workerId,
                 jobName: job.name,
                 cloudmateLogger: cloudmateLogger,
-                cloudmateUser:data.cloudmateUser,
-                ownerUser:data.ownerUser,
+                cloudmateUser: data.cloudmateUser,
+                ownerUser: data.ownerUser,
             }
             const commandExecutionData: CommandExecutionData = {
                 asanaTaskDocument: asanaTaskDocument,
@@ -110,7 +110,15 @@ export class CloudmateWorker {
                 executedCommandDocument.set("execStatus", CommandExecStatus.failed);
                 await executedCommandDocument.save();
                 const cm2Client = new Cloudmate2API(this.workerJWT, data.organizationId);
-                await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, e.useSimone, e.uncompleteSourceTask);
+                try {
+                    await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, e.useSimone, e.uncompleteSourceTask);
+                } catch (e) {
+                    console.log("Error occurred while creating exception");
+                    console.log(e.message);
+                    console.log(e.data);
+                    console.log(e.description);
+                }
+
             }
         });
     }

@@ -36,7 +36,8 @@ export class Cloudmate2API {
         story: {
             postStoryOnTask: this.baseURL + "/story/postStoryOnTask",
             postNotificationOnTask: this.baseURL + "/story/postNotificationOnTask",
-            updateNotificationOnTask: this.baseURL + "/story/updateNotificationOnTask"
+            updateNotificationOnTask: this.baseURL + "/story/updateNotificationOnTask",
+            getAllStoriesFromATask: this.baseURL + "/story/getAllStoriesFromATask",
         },
         exception: {
             createException: this.baseURL + "/exception/createException"
@@ -147,6 +148,15 @@ export class Cloudmate2API {
     }
 
     story = {
+
+        getAllStoriesForTask: async (taskGID: string) => {
+            const response = await axios.get(`${this.urlMap.story.getAllStoriesFromATask}?taskGID=${taskGID}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
         postStoryOnTask: async (taskGID: string, text: string, htmlText?: string, isPinned: boolean = false) => {
             const response = await axios.post(this.urlMap.story.postStoryOnTask, {
                 taskGID: taskGID,
