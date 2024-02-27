@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.17.0
+
+### Minor Changes
+
+- 9c7eeb0: Add getAllStoriesForTask endpoint in Cloudmate2API class
+
 ## 2.16.0
 
 ### Minor Changes
