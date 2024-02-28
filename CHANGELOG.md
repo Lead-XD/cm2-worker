@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 2.17.1
+
+### Patch Changes
+
+- c3c68cb: Add console.log for exception
+
 ## 2.17.0
 
 ### Minor Changes
