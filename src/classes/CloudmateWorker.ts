@@ -113,10 +113,11 @@ export class CloudmateWorker {
                 try {
                     await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, e.useSimone, e.uncompleteSourceTask);
                 } catch (e) {
+                    console.log(e);
                     console.log("Error occurred while creating exception");
-                    console.log(e.message);
-                    console.log(e.data);
-                    console.log(e.description);
+                    console.log(`Error message ${e.message}`);
+                    console.log(`Error description ${e.description}`);
+                    console.log(`Error data ${e.data}`);
                 }
 
             }
