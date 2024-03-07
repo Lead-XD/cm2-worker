@@ -27,7 +27,9 @@ const commandSchema = new mongoose.Schema<CommandDocument>(
         worker: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Worker"
-        }
+        },
+        inheritToChildren: Boolean,
+        configurationsTemplate: mongoose.Schema.Types.Mixed,
     },
     {
         timestamps: true

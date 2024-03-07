@@ -40,7 +40,7 @@ export interface CommandContext  {
     cloudmateLogger:CloudmateLogger,
     cloudmateUser:UserDocumentInterface,
     ownerUser:UserDocumentInterface,
-
+    configurationsInstance:any
 }
 export interface CommandExecutionData {
     asanaTaskDocument:AsanaTaskDocument,
@@ -55,7 +55,9 @@ export interface CommandDocumentInterface {
     priority: number,
     eventFilter: mongoose.Types.ObjectId | EventFilterDocument,
     default: boolean,
+    inheritToChildren:boolean,
     worker: mongoose.Types.ObjectId | WorkerDocument,
+    configurationsTemplate?: any
 }
 
 

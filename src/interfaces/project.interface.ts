@@ -31,6 +31,8 @@ export interface ProjectDocumentInterface {
     commands: {
         id: mongoose.Types.ObjectId | CommandDocument,
         status: CommandStatus,
+        configurationsInstance?: any,
+        projectFilters?:any
     }[],
     resourceType: AsanaResourceTypes;
     archived: boolean;

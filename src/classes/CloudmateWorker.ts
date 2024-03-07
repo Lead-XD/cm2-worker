@@ -75,6 +75,7 @@ export class CloudmateWorker {
                 cloudmateLogger: cloudmateLogger,
                 cloudmateUser: data.cloudmateUser,
                 ownerUser: data.ownerUser,
+                configurationsInstance: data.configurationsInstance
             }
             const commandExecutionData: CommandExecutionData = {
                 asanaTaskDocument: asanaTaskDocument,

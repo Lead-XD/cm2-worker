@@ -72,7 +72,9 @@ const projectSchema = new mongoose.Schema<ProjectDocument>(
         }],
         commands: [{
             id: {type: mongoose.Schema.Types.ObjectId, ref: "Command"},
-            status: {type: String, enum: Object.values(CommandStatus)}
+            status: {type: String, enum: Object.values(CommandStatus)},
+            projectFilters: mongoose.Schema.Types.Mixed,
+            configurationsInstance: mongoose.Schema.Types.Mixed,
         }],
         resourceType: {type: String},
         archived: {type: Boolean},

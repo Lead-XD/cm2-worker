@@ -19,6 +19,7 @@ export interface JobData {
     workerId: mongoose.Types.ObjectId,
     cloudmateUser:UserDocumentInterface,
     ownerUser:UserDocumentInterface,
+    configurationsInstance:any
 }
 
 export interface Context {
