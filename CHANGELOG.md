@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.0.0
+
+### Major Changes
+
+- f488cd2: Support for project level command configurations added.
+
 ## 2.17.1
 
 ### Patch Changes
