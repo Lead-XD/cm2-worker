@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.1.0
+
+### Minor Changes
+
+- fc26c0c: Support for Command to have multiple event filters
+
 ## 3.0.0
 
 ### Major Changes
