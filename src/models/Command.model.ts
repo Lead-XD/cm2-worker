@@ -19,10 +19,10 @@ const commandSchema = new mongoose.Schema<CommandDocument>(
             enum: Object.values(CommandStatus),
         },
         priority: Number,
-        eventFilter: {
+        eventFilters:[{
             type: mongoose.Schema.Types.ObjectId,
             ref: "EventFilter"
-        },
+        }],
         default: Boolean,
         worker: {
             type: mongoose.Schema.Types.ObjectId,

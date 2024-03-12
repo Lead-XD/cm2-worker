@@ -53,7 +53,7 @@ export interface CommandDocumentInterface {
     work: string,
     status: CommandStatus,
     priority: number,
-    eventFilter: mongoose.Types.ObjectId | EventFilterDocument,
+    eventFilters: mongoose.Schema.Types.ObjectId[] | EventFilterDocument[],
     default: boolean,
     inheritToChildren:boolean,
     worker: mongoose.Types.ObjectId | WorkerDocument,
