@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.2.0
+
+### Minor Changes
+
+- f44f188: Create exception class for Cloudmate2API
+
 ## 3.1.0
 
 ### Minor Changes
