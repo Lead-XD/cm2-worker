@@ -7,7 +7,7 @@ import AsanaComment from "./models/AsanaComment.model";
 
 
 //Exported Classes
-export {CloudmateException,UnknownException} from "./classes/CloudmateException";
+export {CloudmateException,UnknownException,Cloudmate2APIException} from "./classes/CloudmateException";
 export {CloudmateWorker} from "./classes/CloudmateWorker";
 export {Cloudmate2API} from "./classes/Cloumdate2API";
 export {CloudmateLogger} from "./classes/CloudmateLogger";
@@ -33,7 +33,7 @@ export {
 export {Context} from "./interfaces/general.interface";
 
 export {WorkFunction} from "./interfaces/worker.interface";
-export {CloudmateExceptionType} from "./interfaces/cloudmateException.interface";
+export {CloudmateExceptionInterface} from "./interfaces/cloudmateException.interface";
 export {UserDocumentInterface} from "./interfaces/user.interface";
 
 

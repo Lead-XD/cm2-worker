@@ -21,6 +21,7 @@ export enum CloudmateExceptionTypes {
     asana = "ASANA",
     google = "GOOGLE",
     cloudmate = "CLOUDMATE",
+    cloudmate2API= "CLOUDMATE2API",
     unknown = "UNKNOWN",
     twilio = "TWILIO",
     sendGrid = "SENDGRID",
@@ -186,15 +187,4 @@ export enum AsanaExceptionDescriptions {
     failedToUpdateTask = "Exception occurred while updating task",
     failedToAddTaskToProject = "Exception occurred while adding task to project",
     failedToRemoveTaskFromProject = "Exception occurred while removing task from project",
-}
-
-export enum TwilioExceptionDescriptions {
-    twilioExceptionOccurred = "Sending SMS from Asana: Twilio Exception occurred while sending sms",
-    twilioExceptionOccurredWhileScheduling = "Scheduling SMS from Asana: Twilio Exception occurred while sending a scheduled sms",
-    createIncomingPhoneNumber = "Exception occurred while creating incoming phone number in Twilio",
-    twilioSMSFailedAfterQueuing = "Twilio failed to send SMS after accepting in Queue"
-}
-
-export enum SendGridExceptions {
-    sendGridExceptionOccurred = "Sending Email from Asana: SendGrid Exception occurred while sending email"
 }

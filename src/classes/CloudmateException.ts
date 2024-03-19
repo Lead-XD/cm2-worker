@@ -1,6 +1,6 @@
 import {
+    CloudmateExceptionInterface,
     CloudmateExceptionMetaData,
-    CloudmateExceptionType
 } from "../interfaces/cloudmateException.interface";
 import {CloudmateExceptionTypes} from "../constants/exception.constants";
 import mongoose from "mongoose";
@@ -26,7 +26,7 @@ export class CloudmateException extends Error {
     uncompleteSourceTask:boolean;
     useSimone?:boolean;
 
-    constructor(cloudmateExceptionObj:CloudmateExceptionType){
+    constructor(cloudmateExceptionObj:CloudmateExceptionInterface){
         super();
         this.name = cloudmateExceptionObj.name||this.name;
         this.message = cloudmateExceptionObj.message||this.message;
@@ -48,7 +48,7 @@ export class CloudmateException extends Error {
 
 
 export class UnknownException extends CloudmateException {
-    constructor(cloudmateExceptionObj:CloudmateExceptionType,exception:any){
+    constructor(cloudmateExceptionObj:CloudmateExceptionInterface,exception:any){
         super(cloudmateExceptionObj);
         this.type = CloudmateExceptionTypes.unknown;
         if(exception){
@@ -61,35 +61,16 @@ export class UnknownException extends CloudmateException {
     }
 }
 
-
-export class TwilioException extends CloudmateException {
-    constructor(cloudmateExceptionObj:CloudmateExceptionType,twilioException:any){
+export class Cloudmate2APIException extends CloudmateException {
+    constructor(cloudmateExceptionObj:CloudmateExceptionInterface,cloudmate2APIException:any){
         super(cloudmateExceptionObj);
-        this.type = CloudmateExceptionTypes.twilio;
-        if(twilioException){
-            this.name = twilioException.name;
-            this.message = twilioException.message;
-            this.statusCode = twilioException.status;
-            this.stack = twilioException.stack;
-            this.exceptionErrors = [twilioException.moreInfo];
-            this.code = twilioException.code;
-            this.description = [twilioException.moreInfo].join(",");
-        }
-    }
-}
-
-
-export class SendGridException extends CloudmateException {
-    constructor(cloudmateExceptionObj:CloudmateExceptionType,sendGridException:any){
-        super(cloudmateExceptionObj);
-        this.type = CloudmateExceptionTypes.sendGrid;
-        if(sendGridException){
-            this.statusCode = sendGridException.code;
-            this.stack = sendGridException.stack;
-            this.exceptionErrors = sendGridException.response.body.errors.map((obj:any)=> obj.message);
-            this.code = sendGridException.code;
-            this.field = sendGridException.response.body.errors[0].field;
-            this.description = sendGridException.response.body.errors[0].message;
+        this.type = CloudmateExceptionTypes.cloudmate2API;
+        if(cloudmate2APIException && cloudmate2APIException.response ){
+            this.statusCode = cloudmate2APIException.response.status;
+            this.message = cloudmate2APIException.message;
+            this.stack = cloudmate2APIException.stack;
+            this.code = cloudmate2APIException.code;
+            this.description = cloudmate2APIException.response.data?.message;
         }
     }
 }

@@ -9,7 +9,7 @@ export interface CloudmateExceptionMetaData  {
     data?:  any,
 }
 
-export interface CloudmateExceptionType  {
+export interface CloudmateExceptionInterface {
     organization?:mongoose.Types.ObjectId,
     name?:string,
     message?:string,
