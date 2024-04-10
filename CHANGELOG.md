@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.3.0
+
+### Minor Changes
+
+- ed1c1d4: Support for multiple project level filters
+
 ## 3.2.0
 
 ### Minor Changes
