@@ -32,5 +32,6 @@ export interface CloudmateExceptionInterface {
     sourceTaskGID:string;
     uncompleteSourceTask?:boolean;
     useSimone?:boolean;
+    throwInAsana?:boolean
 }
 

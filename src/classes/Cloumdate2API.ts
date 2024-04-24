@@ -252,7 +252,7 @@ export class Cloudmate2API {
     }
 
 
-    createException = async (cloudmateException: CloudmateException, triggerID: mongoose.Types.ObjectId, sourceTaskGID: string, parentTaskGID?: string, useSimone: boolean = false, uncompleteSource: boolean = false) => {
+    createException = async (cloudmateException: CloudmateException, triggerID: mongoose.Types.ObjectId, sourceTaskGID: string, parentTaskGID?: string, useSimone: boolean = false, uncompleteSource: boolean = false,throwInAsana:boolean = true) => {
         const data = {
             sourceTaskGID: sourceTaskGID,
             name: cloudmateException.name,
@@ -269,7 +269,8 @@ export class Cloudmate2API {
             useSimone: useSimone,
             exceptionUserNotificationData: cloudmateException.notificationTextData,
             triggerID: triggerID.toString(),
-            uncompleteSourceTask: uncompleteSource
+            uncompleteSourceTask: uncompleteSource,
+            throwInAsana:throwInAsana
         };
         await axios.post(`${this.urlMap.exception.createException}`, data, {
             headers: {...this.authHeaders},

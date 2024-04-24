@@ -112,7 +112,7 @@ export class CloudmateWorker {
                 await executedCommandDocument.save();
                 const cm2Client = new Cloudmate2API(this.workerJWT, data.organizationId);
                 try {
-                    await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, e.useSimone, e.uncompleteSourceTask);
+                    await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, e.useSimone, e.uncompleteSourceTask,e.throwInAsana);
                 } catch (e) {
                     console.log(e);
                     console.log("Error occurred while creating exception");
