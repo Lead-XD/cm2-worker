@@ -44,7 +44,7 @@ export class CloudmateException extends Error {
         this.sourceTaskGID = cloudmateExceptionObj.sourceTaskGID;
         this.uncompleteSourceTask = cloudmateExceptionObj.uncompleteSourceTask || false;
         this.useSimone = cloudmateExceptionObj.useSimone || false;
-        this.throwInAsana = cloudmateExceptionObj.throwInAsana || true;
+        this.throwInAsana = cloudmateExceptionObj.throwInAsana !== undefined ? cloudmateExceptionObj.throwInAsana : true
     }
 }
 
