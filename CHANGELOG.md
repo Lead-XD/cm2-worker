@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.4.0
+
+### Minor Changes
+
+- 7d4f149: Add a flag "throwInAsana" in CloudmateException class
+
 ## 3.3.0
 
 ### Minor Changes
