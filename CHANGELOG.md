@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.4.1
+
+### Patch Changes
+
+- c643af9: Fix CloudmateException class
+
 ## 3.4.0
 
 ### Minor Changes
