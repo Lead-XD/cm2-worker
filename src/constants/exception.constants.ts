@@ -15,6 +15,7 @@ export enum CloudmateExceptionMetaDataTypes {
     customField = "customField",
     command = "command",
     visma= "visma",
+    attachment = "attachment",
 }
 
 export enum CloudmateExceptionTypes {
@@ -187,4 +188,5 @@ export enum AsanaExceptionDescriptions {
     failedToUpdateTask = "Exception occurred while updating task",
     failedToAddTaskToProject = "Exception occurred while adding task to project",
     failedToRemoveTaskFromProject = "Exception occurred while removing task from project",
+    failedToFetchAttachment="Failed to fetch attachment",
 }
