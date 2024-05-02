@@ -9,7 +9,7 @@ import AsanaComment from "./models/AsanaComment.model";
 //Exported Classes
 export {CloudmateException,UnknownException,Cloudmate2APIException} from "./classes/CloudmateException";
 export {CloudmateWorker} from "./classes/CloudmateWorker";
-export {Cloudmate2API} from "./classes/Cloumdate2API";
+export {Cloudmate2API} from "./classes/Cloudmate2API";
 export {CloudmateLogger} from "./classes/CloudmateLogger";
 
 

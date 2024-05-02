@@ -8,7 +8,7 @@ import {
 } from "../interfaces/command.interface";
 import {CommandExecStatus} from "../constants/command.constants";
 import {CloudmateException} from "./CloudmateException";
-import {Cloudmate2API} from "./Cloumdate2API";
+import {Cloudmate2API} from "./Cloudmate2API";
 import Project, {ProjectDocument} from "../models/Project.model";
 import AsanaEvent, {AsanaEventDocument} from "../models/AsanaEvent.model";
 import AsanaTask, {AsanaTaskDocument} from "../models/AsanaTask.model";
