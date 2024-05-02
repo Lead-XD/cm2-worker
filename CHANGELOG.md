@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.5.1
+
+### Patch Changes
+
+- 7693a2c: Add exception descriptions and exceptionMetaTypes
+
 ## 3.5.0
 
 ### Minor Changes
