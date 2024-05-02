@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.5.0
+
+### Minor Changes
+
+- 8dee519: Add getAttachmentByGID to Cloudmate2API
+
 ## 3.4.1
 
 ### Patch Changes
