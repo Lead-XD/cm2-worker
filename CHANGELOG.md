@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.6.0
+
+### Minor Changes
+
+- 0b9e5b1: Add endpoint getCustomFieldByGID to the Cloudmate2API class
+
 ## 3.5.1
 
 ### Patch Changes
