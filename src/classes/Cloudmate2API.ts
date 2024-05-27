@@ -26,6 +26,7 @@ export class Cloudmate2API {
         customfield: {
             getCustomFieldSettingsForProject: this.baseURL + "/customfield/getCustomFieldSettingsForProject",
             getCustomFieldsByTypeAhead: this.baseURL + "/customfield/getCustomFieldsByTypeAhead",
+            getCustomFieldByGID: this.baseURL + "/customField/getCustomFieldByGID",
 
         },
         project: {
@@ -258,6 +259,14 @@ export class Cloudmate2API {
         },
         getCustomFieldsByTypeAhead: async (customFieldName: string) => {
             const response = await axios.get(`${this.urlMap.customfield.getCustomFieldsByTypeAhead}?customFieldName=${customFieldName}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        getCustomFieldByGID: async (customFieldGID: string) => {
+            const response = await axios.get(`${this.urlMap.customfield.getCustomFieldByGID}?customFieldGID=${customFieldGID}`, {
                 headers: {...this.authHeaders}
             });
             if (response) {
