@@ -5,6 +5,13 @@ import {
 } from "../interfaces/cloudmateException.interface";
 import {CloudmateExceptionTypes} from "../constants/exception.constants";
 
+export enum ExceptionSources{
+    cloudmate2 =  "CLOUDMATE2",
+    conductor =  "CONDUCTOR",
+    primaryWorker = "PRIMARY_WORKER",
+    financeWorker = "FINANCE_WORKER",
+
+}
 
 export class CloudmateException extends Error {
     organization?: mongoose.Types.ObjectId;
@@ -26,6 +33,7 @@ export class CloudmateException extends Error {
     uncompleteSourceTask:boolean;
     useSimone?:boolean;
     throwInAsana?:boolean;
+    source?: ExceptionSources;
 
     constructor(cloudmateExceptionObj: CloudmateExceptionInterface) {
         super();
@@ -45,6 +53,7 @@ export class CloudmateException extends Error {
         this.uncompleteSourceTask = cloudmateExceptionObj.uncompleteSourceTask || false;
         this.useSimone = cloudmateExceptionObj.useSimone || false;
         this.throwInAsana = cloudmateExceptionObj.throwInAsana !== undefined ? cloudmateExceptionObj.throwInAsana : true
+        this.source = cloudmateExceptionObj.source;
     }
 }
 

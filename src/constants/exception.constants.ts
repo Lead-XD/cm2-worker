@@ -18,6 +18,14 @@ export enum CloudmateExceptionMetaDataTypes {
     attachment = "attachment",
 }
 
+export enum ExceptionSources{
+    cloudmate2 =  "CLOUDMATE2",
+    conductor =  "CONDUCTOR",
+    primaryWorker = "PRIMARY_WORKER",
+    financeWorker = "FINANCE_WORKER",
+
+}
+
 export enum CloudmateExceptionTypes {
     asana = "ASANA",
     google = "GOOGLE",

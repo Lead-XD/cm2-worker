@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import {
-    CloudmateExceptionMetaDataTypes, CloudmateExceptionTypes
+    CloudmateExceptionMetaDataTypes, CloudmateExceptionTypes, ExceptionSources
 } from "../constants/exception.constants";
 
 export interface CloudmateExceptionMetaData  {
@@ -27,11 +27,12 @@ export interface CloudmateExceptionInterface {
     notificationTextData?:{
         notificationKey:string;
         notificationReplacements:{[key: string]:string};
-    };
-    parentTaskGID?:string;
-    sourceTaskGID:string;
-    uncompleteSourceTask?:boolean;
-    useSimone?:boolean;
-    throwInAsana?:boolean
+    },
+    parentTaskGID?:string,
+    sourceTaskGID:string,
+    uncompleteSourceTask?:boolean,
+    useSimone?:boolean,
+    throwInAsana?:boolean,
+    source?:ExceptionSources
 }
 
