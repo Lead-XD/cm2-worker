@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.7.0
+
+### Minor Changes
+
+- 45eec4e: Add source attribute to exception class and API
+
 ## 3.6.0
 
 ### Minor Changes
