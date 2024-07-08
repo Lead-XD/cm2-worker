@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.8.0
+
+### Minor Changes
+
+- 80e4dee: Add time logging and employees project types
+
 ## 3.7.0
 
 ### Minor Changes
