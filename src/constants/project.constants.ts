@@ -6,5 +6,7 @@ export enum ProjectTypes{
     loveLetterMessages = "LOVE_LETTER_MESSAGES",
     cloudmate = "CLOUDMATE",
     draft = "DRAFT",
+    timeLogging="TIME_LOGGING",
+    employees="EMPLOYEES",
 }
 
