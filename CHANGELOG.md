@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.10.0
+
+### Minor Changes
+
+- a24270c: Add Employee model
+
 ## 3.9.0
 
 ### Minor Changes
