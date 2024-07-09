@@ -39,6 +39,8 @@ export class CloudmateWorker {
 
     initiate() {
 
+
+
         CloudmateWorker.logQueue = new Queue('cm_log_queue', {connection: this.redisConnection});
 
         const systemCpuCores = os.cpus();

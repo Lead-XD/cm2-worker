@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import {EmployeeDocumentInterface} from "../interfaces/employee.interface";
+import connectToCM2DB from "../config/database.config";
 
 
 export interface EmployeeDocument extends mongoose.Document, EmployeeDocumentInterface {
@@ -28,11 +29,11 @@ const employeeSchema = new mongoose.Schema<EmployeeDocument>(
 );
 
 let Employee;
-
+const cm2DBConnection = connectToCM2DB(process.env.CM2_MONGODB_URI!)
 try {
-    Employee = mongoose.model("Employee");
+    Employee = cm2DBConnection.model("Employee");
 } catch (e) {
-    Employee = mongoose.model<EmployeeDocument>("Employee", employeeSchema);
+    Employee = cm2DBConnection.model<EmployeeDocument>("Employee", employeeSchema);
 }
 
 export default Employee as mongoose.Model<EmployeeDocument>;
