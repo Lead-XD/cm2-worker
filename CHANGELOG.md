@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.11.0
+
+### Minor Changes
+
+- 918ad38: Add createProjectFromProjectTemplate API to Cloudmat2API sdk
+
 ## 3.10.0
 
 ### Minor Changes
