@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.11.1
+
+### Patch Changes
+
+- 89e0671: Fix Employee mongoose model
+
 ## 3.11.0
 
 ### Minor Changes
