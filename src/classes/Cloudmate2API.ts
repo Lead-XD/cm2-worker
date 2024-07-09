@@ -1,6 +1,7 @@
 import axios from 'axios';
 import mongoose from 'mongoose';
 import {CloudmateException, UnknownException} from './CloudmateException';
+import {ProjectTypes} from "../constants/project.constants";
 
 
 export class Cloudmate2API {
@@ -33,6 +34,7 @@ export class Cloudmate2API {
             getProjectByGID: this.baseURL + "/project/getProjectByGID",
             saveAllProjectsInWorkspace: this.baseURL + "/project/saveAllProjectsInWorkspace",
             getProjectsByTypeAhead: this.baseURL + "/project/getProjectsByTypeAhead",
+            createProjectFromProjectTemplate: this.baseURL + "/project/createProjectFromProjectTemplate"
         },
         story: {
             postStoryOnTask: this.baseURL + "/story/postStoryOnTask",
@@ -43,8 +45,8 @@ export class Cloudmate2API {
         exception: {
             createException: this.baseURL + "/exception/createException"
         },
-        attachment:{
-            getAttachmentByGID:this.baseURL+"/asanaAttachment/getAttachmentByGID"
+        attachment: {
+            getAttachmentByGID: this.baseURL + "/asanaAttachment/getAttachmentByGID"
         }
     }
 
@@ -58,8 +60,8 @@ export class Cloudmate2API {
     }
 
 
-    attachment={
-        getAttachmentByGID : async (GID:string)=>{
+    attachment = {
+        getAttachmentByGID: async (GID: string) => {
             const response = await axios.get(`${this.urlMap.attachment.getAttachmentByGID}?GID=${GID}`, {
                 headers: {...this.authHeaders}
             });
@@ -88,6 +90,18 @@ export class Cloudmate2API {
         },
         getProjectsByTypeAhead: async (projectName: string) => {
             const response = await axios.get(`${this.urlMap.project.getProjectsByTypeAhead}?projectName=${projectName}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        createProjectFromProjectTemplate: async (projectName: string, projectTemplateGID: string, projectType: ProjectTypes) => {
+            const response = await axios.post(this.urlMap.project.createProjectFromProjectTemplate, {
+                projectName: projectName,
+                projectTemplateGID: projectTemplateGID,
+                projectType: projectType
+            }, {
                 headers: {...this.authHeaders}
             });
             if (response) {
@@ -276,7 +290,7 @@ export class Cloudmate2API {
     }
 
 
-    createException = async (cloudmateException: CloudmateException, triggerID: mongoose.Types.ObjectId, sourceTaskGID: string, parentTaskGID?: string, useSimone: boolean = false, uncompleteSource: boolean = false,throwInAsana:boolean = true) => {
+    createException = async (cloudmateException: CloudmateException, triggerID: mongoose.Types.ObjectId, sourceTaskGID: string, parentTaskGID?: string, useSimone: boolean = false, uncompleteSource: boolean = false, throwInAsana: boolean = true) => {
         const data = {
             sourceTaskGID: sourceTaskGID,
             name: cloudmateException.name,
@@ -294,7 +308,7 @@ export class Cloudmate2API {
             exceptionUserNotificationData: cloudmateException.notificationTextData,
             triggerID: triggerID.toString(),
             uncompleteSourceTask: uncompleteSource,
-            throwInAsana:throwInAsana
+            throwInAsana: throwInAsana
         };
         await axios.post(`${this.urlMap.exception.createException}`, data, {
             headers: {...this.authHeaders},
