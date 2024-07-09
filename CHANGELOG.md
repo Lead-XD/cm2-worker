@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.9.0
+
+### Minor Changes
+
+- 76fb3da: Add EMPLOYEE_RECORD project type
+
 ## 3.8.0
 
 ### Minor Changes
