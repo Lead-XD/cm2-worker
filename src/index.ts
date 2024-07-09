@@ -4,6 +4,7 @@ import Command from "./models/Command.model";
 import ExecutedCommand from "./models/ExecutedCommand.model";
 import Project from "./models/Project.model";
 import AsanaComment from "./models/AsanaComment.model";
+import Employee from "./models/Employee.model";
 
 
 //Exported Classes
@@ -38,6 +39,7 @@ export {CloudmateExceptionInterface} from "./interfaces/cloudmateException.inter
 export {UserDocumentInterface} from "./interfaces/user.interface";
 
 
+
 //Exported helper and utils functions
 export {
     functionIntercept,
@@ -52,6 +54,7 @@ export {CommandDocument} from "./models/Command.model";
 export {ExecutedCommandDocument} from "./models/ExecutedCommand.model";
 export {ProjectDocument} from "./models/Project.model";
 export {AsanaCommentDocument} from "./models/AsanaComment.model";
+export {EmployeeDocument} from "./models/Employee.model"
 
 
 //Exported Models
@@ -61,5 +64,6 @@ export const models = {
     Command,
     ExecutedCommand,
     Project,
-    AsanaComment
+    AsanaComment,
+    Employee
 }
