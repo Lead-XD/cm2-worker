@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import {AsanaUserDocumentInterface} from "../interfaces/asanaUser.interface";
 import {AsanaResourceTypes} from "../constants/asana.constants";
 import connectToCM2DB from "../config/database.config";
-import {CommandDocument} from "./Command.model";
 
 
 
@@ -48,9 +47,9 @@ if (cm2DBConnection) {
     try {
         AsanaUser = cm2DBConnection.model("AsanaUser");
     } catch (e) {
-        AsanaUser = cm2DBConnection.model<AsanaUserDocument>("Command", asanaUserSchema);
+        AsanaUser = cm2DBConnection.model<AsanaUserDocument>("AsanaUser", asanaUserSchema);
     }
 }
 
 
-export default AsanaUser as mongoose.Model<CommandDocument>;
+export default AsanaUser as mongoose.Model<AsanaUserDocument>;
