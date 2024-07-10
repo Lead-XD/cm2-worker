@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.12.1
+
+### Patch Changes
+
+- dd3982a: Fix AsanaUser model
+
 ## 3.12.0
 
 ### Minor Changes
