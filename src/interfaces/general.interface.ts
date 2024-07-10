@@ -5,6 +5,7 @@ import {AsanaEventDocument} from "../models/AsanaEvent.model";
 import {ExecutedCommandDocument} from "../models/ExecutedCommand.model";
 import {workTriggerType} from "../constants/logs.constants";
 import {UserDocumentInterface} from "./user.interface";
+import {AsanaUserDocument} from "../models/AsanaUser.model";
 
 export interface JobData {
     commandId: mongoose.Types.ObjectId,
@@ -19,7 +20,8 @@ export interface JobData {
     workerId: mongoose.Types.ObjectId,
     cloudmateUser:UserDocumentInterface,
     ownerUser:UserDocumentInterface,
-    configurationsInstance:any
+    configurationsInstance:any,
+    asanaUserDocument?:AsanaUserDocument
 }
 
 export interface Context {

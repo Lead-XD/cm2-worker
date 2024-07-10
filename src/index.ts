@@ -5,7 +5,7 @@ import ExecutedCommand from "./models/ExecutedCommand.model";
 import Project from "./models/Project.model";
 import AsanaComment from "./models/AsanaComment.model";
 import Employee from "./models/Employee.model";
-
+import AsanaUser from "./models/AsanaUser.model";
 
 //Exported Classes
 export {CloudmateException,UnknownException,Cloudmate2APIException} from "./classes/CloudmateException";
@@ -55,6 +55,7 @@ export {ExecutedCommandDocument} from "./models/ExecutedCommand.model";
 export {ProjectDocument} from "./models/Project.model";
 export {AsanaCommentDocument} from "./models/AsanaComment.model";
 export {EmployeeDocument} from "./models/Employee.model"
+export {AsanaUserDocument} from "./models/AsanaUser.model"
 
 
 //Exported Models
