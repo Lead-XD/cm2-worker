@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.12.0
+
+### Minor Changes
+
+- 75c2773: Add asanaUserDocument in job data
+
 ## 3.11.1
 
 ### Patch Changes
