@@ -6,6 +6,7 @@ import Project from "./models/Project.model";
 import AsanaComment from "./models/AsanaComment.model";
 import Employee from "./models/Employee.model";
 import AsanaUser from "./models/AsanaUser.model";
+import AIThread from "./models/AIThread.model"
 
 //Exported Classes
 export {CloudmateException,UnknownException,Cloudmate2APIException} from "./classes/CloudmateException";
@@ -20,9 +21,10 @@ export {
     CloudmateExceptionTypes,
     cloudmateExceptionDescriptions,
     AsanaExceptionDescriptions,
-    ExceptionSources
+    ExceptionSources,
 } from "./constants/exception.constants";
 export {workExecStatus,logLevels} from "./constants/logs.constants";
+export {LLMRole} from "./constants/ai.constants";
 
 
 //Exported types and interfaces
@@ -47,7 +49,7 @@ export {
 } from "./util/workLogger.util";
 
 
-//Exported Documents adn Schemas
+//Exported Documents and Schemas
 export {AsanaEventDocument} from "./models/AsanaEvent.model";
 export {AsanaTaskDocument} from "./models/AsanaTask.model";
 export {CommandDocument} from "./models/Command.model";
@@ -56,6 +58,7 @@ export {ProjectDocument} from "./models/Project.model";
 export {AsanaCommentDocument} from "./models/AsanaComment.model";
 export {EmployeeDocument} from "./models/Employee.model"
 export {AsanaUserDocument} from "./models/AsanaUser.model"
+export {AIThreadDocument} from "./models/AIThread.model"
 
 
 //Exported Models
@@ -66,5 +69,7 @@ export const models = {
     ExecutedCommand,
     Project,
     AsanaComment,
-    Employee
+    Employee,
+    AsanaUser,
+    AIThread
 }

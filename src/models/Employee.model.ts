@@ -12,6 +12,7 @@ const employeeSchema = new mongoose.Schema<EmployeeDocument>(
         userGID: {
             type: String,
             unique: true,
+            null:true
         },
         emailAddress: String,
         firstName: String,
