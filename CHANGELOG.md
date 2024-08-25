@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.13.0
+
+### Minor Changes
+
+- cc5a2fa: Add AIThread model and mongoose document
+
 ## 3.12.1
 
 ### Patch Changes
