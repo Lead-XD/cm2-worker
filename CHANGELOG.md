@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.14.0
+
+### Minor Changes
+
+- 9dc5667: Add updateStoryOnTask API
+
 ## 3.13.0
 
 ### Minor Changes
