@@ -38,6 +38,7 @@ export class Cloudmate2API {
         },
         story: {
             postStoryOnTask: this.baseURL + "/story/postStoryOnTask",
+            updateStoryOnTask: this.baseURL + "/story/updateStoryOnTask",
             postNotificationOnTask: this.baseURL + "/story/postNotificationOnTask",
             updateNotificationOnTask: this.baseURL + "/story/updateNotificationOnTask",
             getAllStoriesFromATask: this.baseURL + "/story/getAllStoriesFromATask",
@@ -193,6 +194,18 @@ export class Cloudmate2API {
                 text: text,
                 htmlText: htmlText,
                 isPinned: isPinned
+            }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        updateStoryOnTask: async (storyGID: string, text: string, htmlText?: string) => {
+            const response = await axios.post(this.urlMap.story.updateStoryOnTask, {
+                storyGID: storyGID,
+                text: text,
+                htmlText: htmlText,
             }, {
                 headers: {...this.authHeaders}
             });
