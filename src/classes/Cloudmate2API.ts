@@ -202,7 +202,7 @@ export class Cloudmate2API {
             }
         },
         updateStoryOnTask: async (storyGID: string, text: string, htmlText?: string) => {
-            const response = await axios.post(this.urlMap.story.updateStoryOnTask, {
+            const response = await axios.put(this.urlMap.story.updateStoryOnTask, {
                 storyGID: storyGID,
                 text: text,
                 htmlText: htmlText,
