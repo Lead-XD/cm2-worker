@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.14.1
+
+### Patch Changes
+
+- 37a6881: Fix updateStoryOnTask path
+
 ## 3.14.0
 
 ### Minor Changes
