@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.15.0
+
+### Minor Changes
+
+- c7d3a75: Add AsanaProject model,add setParentForTask API
+
 ## 3.14.1
 
 ### Patch Changes
