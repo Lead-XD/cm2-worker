@@ -18,6 +18,7 @@ export class Cloudmate2API {
             removeTaskFromProject: this.baseURL + "/task/removeTaskFromProject",
             createTask: this.baseURL + "/task/createTask",
             createSubTask: this.baseURL + "/task/createSubTask",
+            setParentForTask: this.baseURL + "/task/setParentForTask",
         },
         section: {
             getSectionsInProject: this.baseURL + "/section/getSectionsInProject",
@@ -169,6 +170,19 @@ export class Cloudmate2API {
             const response = await axios.put(this.urlMap.task.removeTaskFromProject, {
                 taskGID: taskGID,
                 projectGID: projectGID
+            }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        setParentForTask:async (taskGID:string,parentTaskGID:string,insertBefore?:string,insertAfter?:string)=>{
+            const response = await axios.put(this.urlMap.task.setParentForTask, {
+                taskGID: taskGID,
+                parentTaskGID: parentTaskGID,
+                insertBefore: insertBefore,
+                insertAfter: insertAfter
             }, {
                 headers: {...this.authHeaders}
             });

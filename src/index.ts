@@ -7,6 +7,7 @@ import AsanaComment from "./models/AsanaComment.model";
 import Employee from "./models/Employee.model";
 import AsanaUser from "./models/AsanaUser.model";
 import AIThread from "./models/AIThread.model"
+import AsanaProject from "./models/AsanaProject.model"
 
 //Exported Classes
 export {CloudmateException,UnknownException,Cloudmate2APIException} from "./classes/CloudmateException";
@@ -59,6 +60,7 @@ export {AsanaCommentDocument} from "./models/AsanaComment.model";
 export {EmployeeDocument} from "./models/Employee.model"
 export {AsanaUserDocument} from "./models/AsanaUser.model"
 export {AIThreadDocument} from "./models/AIThread.model"
+export {AsanaProjectDocument} from "./models/AsanaProject.model"
 
 
 //Exported Models
@@ -71,5 +73,6 @@ export const models = {
     AsanaComment,
     Employee,
     AsanaUser,
-    AIThread
+    AIThread,
+    AsanaProject
 }

@@ -57,3 +57,39 @@ export interface ProjectDocumentInterface {
     permalinkUrl: string;
     createdFromTemplate: AsanaResourceInterface;
 }
+
+
+export interface AsanaProjectDocumentInterface {
+    app: mongoose.Types.ObjectId;
+    workspaceGID: string;
+    gid: string;
+    team: {
+        gid: string,
+        resourceType: AsanaResourceTypes,
+        name: string,
+    },
+    name: string;
+    resourceType: AsanaResourceTypes;
+    archived: boolean;
+    color: string;
+    createdAt: Date;
+    defaultView: string;
+    dueDate: Date;
+    dueOn: Date;
+    htmlNotes: string;
+    members: [AsanaResourceInterface];
+    modifiedAt: Date;
+    notes: string;
+    public: boolean;
+    startOn: Date;
+    customFields: [CustomField];
+    customFieldSettings: [{gid:string,customField:CustomField}];
+    completed: boolean;
+    completedAt: Date;
+    completedBy: AsanaResourceInterface;
+    followers: [AsanaResourceInterface];
+    owner: AsanaResourceInterface;
+    icon: string;
+    permalinkUrl: string;
+    createdFromTemplate: AsanaResourceInterface;
+}
