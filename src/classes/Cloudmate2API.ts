@@ -48,7 +48,8 @@ export class Cloudmate2API {
             createException: this.baseURL + "/exception/createException"
         },
         attachment: {
-            getAttachmentByGID: this.baseURL + "/asanaAttachment/getAttachmentByGID"
+            getAttachmentByGID: this.baseURL + "/asanaAttachment/getAttachmentByGID",
+            postAttachmentToTask: this.baseURL + "/asanaAttachment/postAttachmentToTask"
         }
     }
 
@@ -65,6 +66,18 @@ export class Cloudmate2API {
     attachment = {
         getAttachmentByGID: async (GID: string) => {
             const response = await axios.get(`${this.urlMap.attachment.getAttachmentByGID}?GID=${GID}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        },
+        postAttachmentToTask: async (taskGID: string, attachmentURL: string, fileName: string) => {
+            const response = await axios.post(this.urlMap.attachment.postAttachmentToTask, {
+                taskGID: taskGID,
+                attachmentURL: attachmentURL,
+                fileName: fileName
+            }, {
                 headers: {...this.authHeaders}
             });
             if (response) {
