@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.16.0
+
+### Minor Changes
+
+- 570fc69: Add postAttachmentToTask API
+
 ## 3.15.0
 
 ### Minor Changes
