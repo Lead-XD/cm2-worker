@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import {createLogger, format, transports} from 'winston';
-import 'winston-mongodb';
+//import 'winston-mongodb';
 import clc from 'cli-color';
 import {colors, logLevels} from "../constants/logs.constants";
 
@@ -21,12 +21,12 @@ export class CloudmateLogger {
         this.triggerDocument = triggerDocument;
         this.logger = createLogger({
             transports: [
-                new transports.MongoDB({
-                    level: logLevel,
-                    format: format.json(),
-                    db: process.env.CM2_MONGODB_URI as string,
-                    collection: "logs",
-                }),
+                // new transports.MongoDB({
+                //     level: logLevel,
+                //     format: format.json(),
+                //     db: process.env.CM2_MONGODB_URI as string,
+                //     collection: "logs",
+                // }),
                 new transports.Console({
                     level: logLevel,
                     format: combine(
