@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.17.0
+
+### Minor Changes
+
+- 568e16a: Disable winston-mongodb logger
+
 ## 3.16.0
 
 ### Minor Changes
