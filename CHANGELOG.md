@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.18.0
+
+### Minor Changes
+
+- 1d2c7b6: Add command and event filter api to worker package
+
 ## 3.17.0
 
 ### Minor Changes
