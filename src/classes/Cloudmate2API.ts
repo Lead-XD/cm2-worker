@@ -50,6 +50,12 @@ export class Cloudmate2API {
         attachment: {
             getAttachmentByGID: this.baseURL + "/asanaAttachment/getAttachmentByGID",
             postAttachmentToTask: this.baseURL + "/asanaAttachment/postAttachmentToTask"
+        },
+        command:{
+            getAllCommands:this.baseURL+"/command/getAllCommands"
+        },
+        eventFilter:{
+            getAllEventFilters:this.baseURL+"/eventFilter/getAllEventFilters"
         }
     }
 
@@ -321,6 +327,26 @@ export class Cloudmate2API {
         },
         getCustomFieldByGID: async (customFieldGID: string) => {
             const response = await axios.get(`${this.urlMap.customfield.getCustomFieldByGID}?customFieldGID=${customFieldGID}`, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        }
+    }
+    command={
+        getAllCommands:async ()=>{
+            const response = await axios.get(this.urlMap.command.getAllCommands, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        }
+    }
+    eventFilter={
+        getAllEventFilters:async ()=> {
+            const response = await axios.get(this.urlMap.eventFilter.getAllEventFilters, {
                 headers: {...this.authHeaders}
             });
             if (response) {
