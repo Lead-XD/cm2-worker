@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.19.0
+
+### Minor Changes
+
+- 1ffa9c4: Updated the README.md file
+
 ## 3.18.0
 
 ### Minor Changes
