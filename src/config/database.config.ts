@@ -21,6 +21,7 @@ const connectToCM2DB = (mongoUrl: string) => {
 
 export async function closeDBConnection() {
     try {
+        console.log(!!cm2DBConnection);
         if (cm2DBConnection) {
             await cm2DBConnection.close();
             console.log('MongoDB connection closed');
