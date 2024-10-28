@@ -17,4 +17,19 @@ const connectToCM2DB = (mongoUrl: string) => {
     }
 };
 
+
+
+export async function closeDBConnection() {
+    try {
+        if (mongoose.connection.readyState !== 0) {
+            await mongoose.connection.close();
+            console.log('MongoDB connection closed');
+        }
+    } catch (error) {
+        console.log('Error closing MongoDB connection');
+    }
+}
+
+
+
 export default connectToCM2DB;

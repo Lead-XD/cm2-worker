@@ -1,3 +1,4 @@
+import readline from "node:readline";
 import AsanaEvent from "./models/AsanaEvent.model";
 import AsanaTask from "./models/AsanaTask.model";
 import Command from "./models/Command.model";
@@ -8,6 +9,7 @@ import Employee from "./models/Employee.model";
 import AsanaUser from "./models/AsanaUser.model";
 import AIThread from "./models/AIThread.model"
 import AsanaProject from "./models/AsanaProject.model"
+import {closeDBConnection} from "./config/database.config";
 
 //Exported Classes
 export {CloudmateException,UnknownException,Cloudmate2APIException} from "./classes/CloudmateException";
@@ -76,3 +78,25 @@ export const models = {
     AIThread,
     AsanaProject
 }
+
+console.log('1')
+readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+}).on('SIGINT', () => {
+    process.emit('SIGINT');
+});
+
+
+
+process.on('SIGTERM', async () => {
+    console.log('SIGTERM received. Closing MongoDB connections...');
+    await closeDBConnection();
+    process.exit(0);
+});
+
+process.on('SIGINT', async () => {
+    console.log('SIGINT received. Closing MongoDB connections...');
+    await closeDBConnection();
+    process.exit(0);
+});
