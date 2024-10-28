@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.20.1
+
+### Patch Changes
+
+- 5aa7640: Fix closeDBConnection functions
+
 ## 3.20.0
 
 ### Minor Changes
