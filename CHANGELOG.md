@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.20.0
+
+### Minor Changes
+
+- 87fbf4f: Close DB connection on process exit
+
 ## 3.19.0
 
 ### Minor Changes
