@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 3.20.2
+
+### Patch Changes
+
+- d87b0ed: Add logs to closeDBConnection
+
 ## 3.20.1
 
 ### Patch Changes
