@@ -9,6 +9,7 @@ import Employee from "./models/Employee.model";
 import AsanaUser from "./models/AsanaUser.model";
 import AIThread from "./models/AIThread.model"
 import AsanaProject from "./models/AsanaProject.model"
+import TypeFormEvent from "./models/TypeFormEvent.model"
 import {closeDBConnection} from "./config/database.config";
 
 //Exported Classes
@@ -63,6 +64,7 @@ export {EmployeeDocument} from "./models/Employee.model"
 export {AsanaUserDocument} from "./models/AsanaUser.model"
 export {AIThreadDocument} from "./models/AIThread.model"
 export {AsanaProjectDocument} from "./models/AsanaProject.model"
+export {TypeFormEventDocument} from "./models/TypeFormEvent.model"
 
 
 //Exported Models
@@ -76,10 +78,10 @@ export const models = {
     Employee,
     AsanaUser,
     AIThread,
-    AsanaProject
+    AsanaProject,
+    TypeFormEvent
 }
 
-console.log('1')
 readline.createInterface({
     input: process.stdin,
     output: process.stdout

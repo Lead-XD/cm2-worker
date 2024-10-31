@@ -1,5 +1,5 @@
 import { Timestamp } from "mongodb";
-import {AsanaEventSources} from "../constants/constants";
+import {EventSources} from "../constants/constants";
 import mongoose from "mongoose";
 
 interface gidResourceType {
@@ -14,17 +14,21 @@ interface gidResourceTypeSubType extends gidResourceType {
 interface addedValueType extends gidResourceType {
     user:gidResourceType;
 }
-interface cloudmateProjectData {
+export interface eventInterface {
+    cm:cloudmateProjectData
+}
+
+export interface cloudmateProjectData {
     project: string;
     projectGID:string,
     projectType:string,
-    source: AsanaEventSources,
+    source: EventSources,
     identifier: string;
     processed: boolean;
     exception:mongoose.Schema.Types.ObjectId,
 }
 
-export interface asanaEventDocumentInterface {
+export interface asanaEventDocumentInterface extends eventInterface {
 
     receivedAt?: Timestamp;
     updatedAt?: Timestamp;
@@ -41,6 +45,5 @@ export interface asanaEventDocumentInterface {
     }
     resource?: gidResourceTypeSubType;
     parent?:gidResourceTypeSubType;
-    cm:cloudmateProjectData
 
 }

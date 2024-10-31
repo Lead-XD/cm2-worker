@@ -10,6 +10,7 @@ import {workTriggerType} from "../constants/logs.constants";
 import {CloudmateLogger} from "../classes/CloudmateLogger";
 import {UserDocumentInterface} from "./user.interface";
 import {AsanaUserDocument} from "../models/AsanaUser.model";
+import {TypeFormEventDocument} from "../models/TypeFormEvent.model";
 
 
 export interface  ExecutedCommandDocumentType {
@@ -33,7 +34,7 @@ export interface CommandContext  {
     organizationId: mongoose.Types.ObjectId,
     commandId: mongoose.Types.ObjectId,
     projectDocument:ProjectDocument,
-    eventDocument: AsanaEventDocument,
+    eventDocument: AsanaEventDocument|TypeFormEventDocument,
     trigger:TriggerContext,
     workerId: mongoose.Types.ObjectId,
     appId: mongoose.Types.ObjectId,
@@ -45,7 +46,7 @@ export interface CommandContext  {
     asanaUserDocument?:AsanaUserDocument
 }
 export interface CommandExecutionData {
-    asanaTaskDocument:AsanaTaskDocument,
+    asanaTaskDocument?:AsanaTaskDocument,
     resource:Object,
 }
 

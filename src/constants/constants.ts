@@ -1,6 +1,9 @@
-export enum AsanaEventSources{
+export enum EventSources{
     token="token",
-    asana="asana"
+    asana="asana",
+    microsoft="microsoft",
+    google="google",
+    typeform="typeform"
 }
 export const isRequired = " is Required";
 

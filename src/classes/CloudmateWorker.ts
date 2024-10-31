@@ -18,6 +18,8 @@ import ExecutedCommand, {
 import {JobData} from "../interfaces/general.interface";
 import {workTriggerType} from "../constants/logs.constants";
 import {CloudmateLogger} from "./CloudmateLogger";
+import TypeFormEvent,{TypeFormEventDocument} from "../models/TypeFormEvent.model";
+import {EventSources} from "../constants/constants";
 
 
 export class CloudmateWorker {
@@ -38,9 +40,6 @@ export class CloudmateWorker {
     }
 
     initiate() {
-
-
-
         CloudmateWorker.logQueue = new Queue('cm_log_queue', {connection: this.redisConnection});
 
         const systemCpuCores = os.cpus();
@@ -55,8 +54,15 @@ export class CloudmateWorker {
             const projectDocument: ProjectDocument = new Project(data.projectDocument);
             projectDocument.isNew = false;
 
-            const asanaEventDocument: AsanaEventDocument = new AsanaEvent(data.eventDocument);
-            asanaEventDocument.isNew = false;
+            let eventDocument: AsanaEventDocument | TypeFormEventDocument;
+            if(data.eventDocument.cm.source === EventSources.asana){
+                eventDocument = new AsanaEvent(data.eventDocument);
+            }else if(data.eventDocument.cm.source === EventSources.typeform){
+                eventDocument = new TypeFormEvent(data.eventDocument);
+            }else{
+                return;
+            }
+            eventDocument.isNew = false;
 
             const asanaTaskDocument: AsanaTaskDocument = new AsanaTask(data.asanaTaskDocument);
             asanaTaskDocument.isNew = false;
@@ -67,7 +73,7 @@ export class CloudmateWorker {
                 workspaceGID: data.workspaceGID,
                 appId: data.appId,
                 projectDocument: projectDocument,
-                eventDocument: asanaEventDocument,
+                eventDocument: eventDocument,
                 trigger: {
                     triggerDocument: executedCommandDocument!,
                     triggerType: workTriggerType.command

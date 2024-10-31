@@ -6,6 +6,7 @@ import {ExecutedCommandDocument} from "../models/ExecutedCommand.model";
 import {workTriggerType} from "../constants/logs.constants";
 import {UserDocumentInterface} from "./user.interface";
 import {AsanaUserDocument} from "../models/AsanaUser.model";
+import {TypeFormEventDocument} from "../models/TypeFormEvent.model";
 
 export interface JobData {
     commandId: mongoose.Types.ObjectId,
@@ -13,8 +14,8 @@ export interface JobData {
     appId: mongoose.Types.ObjectId,
     workspaceGID: string,
     projectDocument: ProjectDocument,
-    asanaTaskDocument: AsanaTaskDocument,
-    eventDocument: AsanaEventDocument,
+    asanaTaskDocument?: AsanaTaskDocument,
+    eventDocument: AsanaEventDocument|TypeFormEventDocument,
     executedCommandDocument: ExecutedCommandDocument,
     resource: any,
     workerId: mongoose.Types.ObjectId,

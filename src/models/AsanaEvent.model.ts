@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {AsanaEventSources} from "../constants/constants";
+import {EventSources} from "../constants/constants";
 import {asanaEventDocumentInterface} from "../interfaces/asanaEvent.interface";
 import connectToCM2DB from "../config/database.config";
 
@@ -55,7 +55,7 @@ const asanaEventSchema = new mongoose.Schema<AsanaEventDocument>(
             projectType: String,
             source: {
                 type: String,
-                enum: Object.values(AsanaEventSources)
+                enum: Object.values(EventSources)
             },
             identifier: {type: String, unique: true},
             processed: Boolean,
