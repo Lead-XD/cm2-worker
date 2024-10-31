@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 4.0.0
+
+### Major Changes
+
+- 23db80a: Add suport for typeform workers
+
 ## 3.20.2
 
 ### Patch Changes
