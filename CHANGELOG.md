@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 4.1.0
+
+### Minor Changes
+
+- 8049aab: Add getAllTasksInProject API to Cloudmate2API
+
 ## 4.0.0
 
 ### Major Changes
