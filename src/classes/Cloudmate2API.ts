@@ -19,6 +19,7 @@ export class Cloudmate2API {
             createTask: this.baseURL + "/task/createTask",
             createSubTask: this.baseURL + "/task/createSubTask",
             setParentForTask: this.baseURL + "/task/setParentForTask",
+            getAllTasksInProject: this.baseURL + "/task/getAllTasksInProject"
         },
         section: {
             getSectionsInProject: this.baseURL + "/section/getSectionsInProject",
@@ -203,6 +204,15 @@ export class Cloudmate2API {
                 insertBefore: insertBefore,
                 insertAfter: insertAfter
             }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+
+        },
+        getAllTasksInProject:async (projectGID:string)=>{
+            const response = await axios.get(`${this.urlMap.task.getAllTasksInProject}?projectGID=${projectGID}`, {
                 headers: {...this.authHeaders}
             });
             if (response) {
