@@ -10,6 +10,7 @@ interface TypeFormEventDocumentInterface extends eventInterface {
         token: string;
         landedAt: string; // Use string if dates are in ISO format, or Date if parsed
         submittedAt: string;
+        hidden:any,
         definition: {
             id: string;
             title: string;

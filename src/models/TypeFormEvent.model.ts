@@ -19,6 +19,7 @@ const typeFormEventSchema = new Schema(
             token: {type: String, required: true},
             landedAt: {type: Date, required: true},
             submittedAt: {type: Date, required: true},
+            hidden:{type: Schema.Types.Mixed}, // Can be any
             definition: {
                 id: {type: String, required: true},
                 title: {type: String, required: true},
