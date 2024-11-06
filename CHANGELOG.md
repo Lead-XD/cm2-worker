@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 4.2.0
+
+### Minor Changes
+
+- 2e1ed2e: Update typeform event
+
 ## 4.1.0
 
 ### Minor Changes
