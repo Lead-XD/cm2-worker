@@ -48,7 +48,7 @@ export class CloudmateWorker {
 
         const systemCpuCores = os.cpus();
 
-        const bullmqWorker = new Worker(this.queueName, async (job: Job) => {
+        this.bullmqWorker = new Worker(this.queueName, async (job: Job) => {
             console.log(`[${new Date().toLocaleString()}] Processing Job: ${job.name}.`);
 
             const data = job.data as JobData;
@@ -106,7 +106,7 @@ export class CloudmateWorker {
             concurrency: systemCpuCores.length
         });
 
-        bullmqWorker.on('completed', async (job: Job) => {
+        this.bullmqWorker.on('completed', async (job: Job) => {
             console.log(`Job Completed ${job?.name},${job?.id}`)
             const data = job.data as JobData;
             const executedCommandDocument: ExecutedCommandDocument = new ExecutedCommand(data.executedCommandDocument);
@@ -115,7 +115,7 @@ export class CloudmateWorker {
             await executedCommandDocument.save();
         });
 
-        bullmqWorker.on('failed', async (job, e) => {
+        this.bullmqWorker.on('failed', async (job, e) => {
             console.log(`Job Failed ${job?.name},${job?.id}`)
             if (job && e instanceof CloudmateException) {
                 const data = job.data as JobData;
@@ -136,13 +136,9 @@ export class CloudmateWorker {
 
             }
         });
-
-        process.on('SIGINT', () => this.shutdown());
-        process.on('SIGTERM', () => this.shutdown());
-
     }
 
-    private async shutdown() {
+    public async shutdown() {
         console.log('Graceful shutdown initiated...');
         if (this.bullmqWorker) {
             await this.bullmqWorker.close();

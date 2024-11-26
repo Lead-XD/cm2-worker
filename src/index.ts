@@ -80,10 +80,3 @@ export const models = {
     AsanaProject,
     TypeFormEvent
 }
-
-readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-}).on('SIGINT', () => {
-    process.emit('SIGINT');
-});
