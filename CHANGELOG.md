@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 4.3.0
+
+### Minor Changes
+
+- 689377d: Gracefull shutdown of the worker queue
+
 ## 4.2.0
 
 ### Minor Changes
