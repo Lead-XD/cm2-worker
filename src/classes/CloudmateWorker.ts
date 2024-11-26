@@ -18,8 +18,11 @@ import ExecutedCommand, {
 import {JobData} from "../interfaces/general.interface";
 import {workTriggerType} from "../constants/logs.constants";
 import {CloudmateLogger} from "./CloudmateLogger";
-import TypeFormEvent,{TypeFormEventDocument} from "../models/TypeFormEvent.model";
+import TypeFormEvent, {
+    TypeFormEventDocument
+} from "../models/TypeFormEvent.model";
 import {EventSources} from "../constants/constants";
+import {closeDBConnection} from "../config/database.config";
 
 
 export class CloudmateWorker {
@@ -27,7 +30,8 @@ export class CloudmateWorker {
     private readonly redisConnection: Redis;
     private readonly queueName: string;
     private readonly workerJWT: string;
-    public static logQueue: Queue
+    public static logQueue: Queue;
+    private bullmqWorker: Worker | undefined;
 
     constructor(queueName: string, workerJWT: string, redisURL: string) {
         this.queueName = queueName;
@@ -55,11 +59,11 @@ export class CloudmateWorker {
             projectDocument.isNew = false;
 
             let eventDocument: AsanaEventDocument | TypeFormEventDocument;
-            if(data.eventDocument.cm.source === EventSources.asana){
+            if (data.eventDocument.cm.source === EventSources.asana) {
                 eventDocument = new AsanaEvent(data.eventDocument);
-            }else if(data.eventDocument.cm.source === EventSources.typeform){
+            } else if (data.eventDocument.cm.source === EventSources.typeform) {
                 eventDocument = new TypeFormEvent(data.eventDocument);
-            }else{
+            } else {
                 return;
             }
             eventDocument.isNew = false;
@@ -84,7 +88,7 @@ export class CloudmateWorker {
                 cloudmateUser: data.cloudmateUser,
                 ownerUser: data.ownerUser,
                 configurationsInstance: data.configurationsInstance,
-                asanaUserDocument:data.asanaUserDocument
+                asanaUserDocument: data.asanaUserDocument
             }
             const commandExecutionData: CommandExecutionData = {
                 asanaTaskDocument: asanaTaskDocument,
@@ -121,7 +125,7 @@ export class CloudmateWorker {
                 await executedCommandDocument.save();
                 const cm2Client = new Cloudmate2API(this.workerJWT, data.organizationId);
                 try {
-                    await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, e.useSimone, e.uncompleteSourceTask,e.throwInAsana);
+                    await cm2Client.createException(e, executedCommandDocument._id, e.sourceTaskGID, e.parentTaskGID, e.useSimone, e.uncompleteSourceTask, e.throwInAsana);
                 } catch (e) {
                     console.log(e);
                     console.log("Error occurred while creating exception");
@@ -132,5 +136,23 @@ export class CloudmateWorker {
 
             }
         });
+
+        process.on('SIGINT', () => this.shutdown());
+        process.on('SIGTERM', () => this.shutdown());
+
     }
+
+    private async shutdown() {
+        console.log('Graceful shutdown initiated...');
+        if (this.bullmqWorker) {
+            await this.bullmqWorker.close();
+            console.log('Worker closed.');
+        }
+        await this.redisConnection.quit();
+        console.log('Redis connection closed.');
+        console.log('SIGTERM received. Closing MongoDB connections...');
+        await closeDBConnection();
+        process.exit(0);
+    }
+
 }

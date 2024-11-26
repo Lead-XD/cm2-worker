@@ -10,7 +10,6 @@ import AsanaUser from "./models/AsanaUser.model";
 import AIThread from "./models/AIThread.model"
 import AsanaProject from "./models/AsanaProject.model"
 import TypeFormEvent from "./models/TypeFormEvent.model"
-import {closeDBConnection} from "./config/database.config";
 
 //Exported Classes
 export {CloudmateException,UnknownException,Cloudmate2APIException} from "./classes/CloudmateException";
@@ -87,18 +86,4 @@ readline.createInterface({
     output: process.stdout
 }).on('SIGINT', () => {
     process.emit('SIGINT');
-});
-
-
-
-process.on('SIGTERM', async () => {
-    console.log('SIGTERM received. Closing MongoDB connections...');
-    await closeDBConnection();
-    process.exit(0);
-});
-
-process.on('SIGINT', async () => {
-    console.log('SIGINT received. Closing MongoDB connections...');
-    await closeDBConnection();
-    process.exit(0);
 });
