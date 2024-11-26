@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 4.4.0
+
+### Minor Changes
+
+- 0d43b69: Changes to graceful shutdown
+
 ## 4.3.0
 
 ### Minor Changes
