@@ -1,5 +1,16 @@
 # cm2-worker
 
+## 4.5.0
+
+### Minor Changes
+
+- 886a7ba: Multip user support
+
+### Patch Changes
+
+- afa34d5: Fix github action
+- 3c51eec: Change github action
+
 ## 4.4.0
 
 ### Minor Changes
