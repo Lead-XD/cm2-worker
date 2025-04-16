@@ -13,7 +13,8 @@ export interface UserDocumentInterface  {
     }
 
 
-    selectedOrganization: mongoose.Types.ObjectId;
+    organizations: mongoose.Types.ObjectId[];
+    organization: mongoose.Types.ObjectId;
     inviteStatus: string;
 
     passwordResetToken: string;

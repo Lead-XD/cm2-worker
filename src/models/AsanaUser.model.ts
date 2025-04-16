@@ -32,7 +32,6 @@ const asanaUserSchema = new mongoose.Schema<AsanaUserDocument>(
             },
             name: {type: String, required: true},
         }],
-        selectedOrganization: {type: mongoose.Schema.Types.ObjectId, ref: "Organization"},
     },
     {
         timestamps: {createdAt: "createdAt", updatedAt: "updatedAt"},

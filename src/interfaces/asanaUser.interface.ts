@@ -16,7 +16,6 @@ export interface AsanaUserDocumentInterface {
         image1024x1024: string
     },
     workspaces: workspace[],
-    selectedOrganization:mongoose.Types.ObjectId,
 }
 
 interface workspace {
