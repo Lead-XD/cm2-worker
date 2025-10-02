@@ -57,8 +57,10 @@ export class Cloudmate2API {
         },
         eventFilter:{
             getAllEventFilters:this.baseURL+"/eventFilter/getAllEventFilters"
-        }
-    }
+        },
+        variable:{
+            replaceVariableGraph:this.baseURL+"/variable/replaceVariableGraph"
+        }    }
 
     constructor(jwt: string, organizationId: mongoose.Types.ObjectId) {
         this.jwt = jwt;
@@ -364,7 +366,19 @@ export class Cloudmate2API {
             }
         }
     }
-
+    variable={
+        replaceVariableGraph:async (text: string, sourceTaskGID: string)=> {
+            const response = await axios.post(this.urlMap.variable.replaceVariableGraph, {
+                text: text,
+                sourceTaskGID: sourceTaskGID
+            }, {
+                headers: {...this.authHeaders}
+            });
+            if (response) {
+                return response.data;
+            }
+        }
+    }
 
     createException = async (cloudmateException: CloudmateException, triggerID: mongoose.Types.ObjectId, sourceTaskGID: string, parentTaskGID?: string, useSimone: boolean = false, uncompleteSource: boolean = false, throwInAsana: boolean = true) => {
         const data = {
