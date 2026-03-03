@@ -1,6 +1,6 @@
 {
   "name": "cm2-worker",
-  "version": "4.5.1",
+  "version": "4.5.2",
   "description": "Worker for CM2",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -31,11 +31,11 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
-    "bullmq": "^4.0.0",
+    "bullmq": "~5.70.1",
     "cli-color": "^2.0.3",
     "concurrently": "^8.2.0",
     "dotenv": "^16.3.1",
-    "ioredis": "^5.3.2",
+    "ioredis": "^5.9.3",
     "lodash": "^4.17.21",
     "mongodb": "^5.7.0",
     "mongoose": "^7.3.1",

@@ -1,5 +1,11 @@
 # cm2-worker
 
+## 4.5.2
+
+### Patch Changes
+
+- Bumped the ioredis and bullmq packages.
+
 ## 4.5.0
 
 ### Minor Changes
